@@ -29,7 +29,7 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
    * **Kod faylı:** [`query_1.sql`](./Week_1_SQL/Checkpoint_1/query_1.sql)
    * **Məntiq:** Almaniyada olan müştəriləri əlifba sırası ilə sıralayıb ilk 5 nəticəni gətirir.
    * **Nəticə skrinşotu:**
-     ![Query 1 Result](Week_1_SQL/Checkpoint_1/images/query_1.png)
+     ![Query 1 Result](/images/query_1.png)
 
 2. **Sual 2: Londonda yaşayan rəhbər şəxslər (Owner və ya Manager) kimlərdir?**
    * **Kod faylı:** [`query_2.sql`](./Week_1_SQL/Checkpoint_1/query_2.sql)
