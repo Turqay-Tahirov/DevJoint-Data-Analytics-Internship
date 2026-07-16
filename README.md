@@ -48,4 +48,4 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 5. **Sual 5: Fransaya göndərilən və dəyəri 1000$-dan baha olan ilk 5 satış hansıdır?**
    * **Kod faylı:** [`query_5.sql`](./Week_1_SQL/Checkpoint_1/query_5.sql)
    * **Məntiq:** Fransaya gedən və tək məhsul satışı üzrə faktura dəyəri 1000 dollardan yüksək olan ən böyük 5 fərdi satışı gətirir.
-     ![Query 5 Result](Week_1_SQL/Checkpoint_1/images/query_5.png)
+     ![Query 5 Result](/images/query_5.png)
