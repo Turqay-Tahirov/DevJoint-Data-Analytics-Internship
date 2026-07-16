@@ -1,4 +1,4 @@
-/* 
+/* Query_1
 Sual: Almaniyadakı ilk 5 müştəri kimlərdir? 
 İzah: Bu sorğu, Almaniyada olan müştəriləri əlifba sırası ilə düzüb ilk 5 dənəsini gətirir.
 */
