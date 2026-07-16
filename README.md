@@ -28,13 +28,11 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 1. **Sual 1: Almaniyadakı ilk 5 müştəri kimlərdir?**
    * **Kod faylı:** [`query_1.sql`](./Week_1_SQL/Checkpoint_1/query_1.sql)
    * **Məntiq:** Almaniyada olan müştəriləri əlifba sırası ilə sıralayıb ilk 5 nəticəni gətirir.
-   * **Nəticə skrinşotu:**
      ![Query 1 Result](/images/query_1.png)
 
 2. **Sual 2: Londonda yaşayan rəhbər şəxslər (Owner və ya Manager) kimlərdir?**
    * **Kod faylı:** [`query_2.sql`](./Week_1_SQL/Checkpoint_1/query_2.sql)
    * **Məntiq:** Londonda yaşayan və vəzifə adında "Owner" və ya "Manager" olan kontaktları tapır.
-   * **Nəticə skrinşotu:**
      ![Query 2 Result](/images/query_2.png)
 
 3. **Sual 3: ABŞ daxilində karqo pulu 150$-dan çox olan ilk 10 baha sifariş hansıdır?**
