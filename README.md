@@ -6,8 +6,7 @@ Bu repozitoriya, **DevJoint** tərəfindən təşkil olunmuş 4 həftəlik Data 
 
 ### 🗄️ İstifadə Olunan Verilənlər Bazası (Database)
 Bu layihədəki sorğular GitHub-a əlavə edilmiş **Northwind** verilənlər bazası üzərində qurulmuşdur: 
-*   **Baza faylı:** [`northwind_database.sql`](/northwind_database.sql)
-*   
+*   **Baza faylı:** [`northwind_database.sql`](northwind.db)
 ---
 ## 📁 Layihə Quruluşu (Project Structure)
 
