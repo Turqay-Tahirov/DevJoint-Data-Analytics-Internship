@@ -35,19 +35,19 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
    * **Kod faylı:** [`query_2.sql`](./Week_1_SQL/Checkpoint_1/query_2.sql)
    * **Məntiq:** Londonda yaşayan və vəzifə adında "Owner" və ya "Manager" olan kontaktları tapır.
    * **Nəticə skrinşotu:**
-     ![Query 2 Result](Week_1_SQL/Checkpoint_1/images/query_2.png)
+     ![Query 2 Result](/images/query_2.png)
 
 3. **Sual 3: ABŞ daxilində karqo pulu 150$-dan çox olan ilk 10 baha sifariş hansıdır?**
    * **Kod faylı:** [`query_3.sql`](./Week_1_SQL/Checkpoint_1/query_3.sql)
    * **Məntiq:** Amerikaya göndərilən və çatdırılma xərci ən yüksək olan 10 böyük sifarişi azalan sıra ilə göstərir.
    * **Nəticə skrinşotu:**
-     ![Query 3 Result](Week_1_SQL/Checkpoint_1/images/query_3.png)
+     ![Query 3 Result](/images/query_3.png)
 
 4. **Sual 4: Müştəriyə hələ göndərilməmiş ən təcili ilk 5 sifariş hansıdır?**
    * **Kod faylı:** [`query_4.sql`](./Week_1_SQL/Checkpoint_1/query_4.sql)
    * **Məntiq:** Göndərilmə tarixi (ShippedDate) boş olan sifarişləri tələb olunan çatdırılma tarixinə (RequiredDate) görə artan sıra ilə düzür.
    * **Nəticə skrinşotu:**
-     ![Query 4 Result](Week_1_SQL/Checkpoint_1/images/query_4.png)
+     ![Query 4 Result](/images/query_4.png)
 
 5. **Sual 5: Fransaya göndərilən və dəyəri 1000$-dan baha olan ilk 5 satış hansıdır?**
    * **Kod faylı:** [`query_5.sql`](./Week_1_SQL/Checkpoint_1/query_5.sql)
