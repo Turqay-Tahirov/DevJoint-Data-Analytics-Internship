@@ -26,7 +26,6 @@ Bu həftə ərzində "Northwind" verilənlər bazası üzərində fərqli çəti
 ### 📌 Checkpoint 1: Əsas SELECT / WHERE / ORDER BY / LIMIT
 
 Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclənməsi (filtering) və sıralanması (sorting) həyata keçirilmişdir.
-
 #### 🔍 Sorğular və İzahları:
 
 1. **Sual 1: Almaniyadakı ilk 5 müştəri kimlərdir?**
