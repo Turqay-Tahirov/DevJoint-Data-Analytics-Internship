@@ -92,19 +92,21 @@ Bu mərhələdə fərqli cədvəllərdə saxlanılan əlaqəli məlumatları biz
 
 #### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
 
-*   **Sual 1: Hər bir sifarişin hansı işçi tərəfindən hansı müştəriyə satıldığını necə görə bilərik? (inner join)**
-    *   **Məntiq:** `Orders` cədvəlini həm `Employees`, həm də `Customers` cədvəli ilə birləşdirərək satış prosesinin bütün tərəflərini bir yerdə göstərir.
+*   **Sual 1: Hər bir sifarişin ID-si, onu yazan işçi və sifarişi verən müştəri kimdir? (inner join)**
+    *   **Məntiq:** İzah: employees, orders və customers cədvəllərini inner join ilə birləşdirərək həm işçisi,
+ həm də müştərisi olan sifarişləri siyahılayır.
     *   **SQL Kodu (`query_1.sql`):**
         ```sql
         select ord.OrderID as "Sifariş ID", (emp.FirstName || ' ' || emp.LastName) as "İşçi",
-        cus.CompanyName as "Müştəri"
+        cus.CompanyNamxie as "Müştəri"
         from Employees emp
         inner join Orders ord on emp.EmployeeID = ord.EmployeeID
         inner join Customers cus on ord.CustomerID = cus.CustomerID;
         ```
 
-*   **Sual 2: Satılan hər bir məhsulun adını, aid olduğu kateqoriyanı və satış qiymətini necə siyahılaya bilərik?(left join)**
-    *   **Məntiq:** `Products` cədvəlini `Categories` ilə birləşdirərək hər bir məhsulun vizual kateqoriya adını onun qiyməti ilə yanaşı gətirir.
+*   **Sual 2: S2. Bütün müştərilərin və əgər varsa, onların sifarişlərinin siyahısı hansıdır? (left join)**
+    *   **Məntiq:** İzah: left join vasitəsilə bütün müştərilər ekrana gətirilir və hələ heç bir sifariş
+ verməyən müştərilər də siyahıda qorunur.
     *   **SQL Kodu (`query_2.sql`):**
         ```sql
         select cus.CompanyName as "Müştəri",
@@ -113,6 +115,23 @@ Bu mərhələdə fərqli cədvəllərdə saxlanılan əlaqəli məlumatları biz
         from Customers cus
         left join Orders ord on cus.CustomerID = ord.CustomerID
         left join Employees emp on ord.EmployeeID = emp.EmployeeID; /
+        ```
+
+
+
+        *   **Sual 3: 3 Hər bir sifarişin id-si, sifarişi yazan işçini, onun rəhbərini və müştərinin adını necə görə bilərik? (self join)**
+    *   **Məntiq:**  'Employees' cədvəli öz-özünə qoşularaq (Self-Join) hər bir sifarişi yazan işçi
+ ilə bərabər onun birbaşa rəhbərini də eyni sətirdə göstərir.
+    *   **SQL Kodu (`query_2.sql`):**
+        ```sql
+         select ord.OrderID as "Sifariş ID",
+        cus.CompanyName as "Müştəri Şirkət",
+        (emp.FirstName || ' ' || emp.LastName) as "Sifarişi Yazan İşçi",
+        (mgr.FirstName || ' ' || mgr.LastName) as "Onun Rəhbəri"
+        from Customers cus
+        inner join Orders ord on cus.CustomerID = ord.CustomerID
+        left JOIN Employees emp on ord.EmployeeID = emp.EmployeeID
+        left join Employees mgr on emp.ReportsTo = mgr.EmployeeID;
         ```
 
 ---
