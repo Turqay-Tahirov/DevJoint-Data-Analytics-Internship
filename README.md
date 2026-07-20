@@ -259,3 +259,34 @@ Bu mərhələdə verilənlər bazasındakı sətirləri qruplaşdırmadan, hər 
             SUM(Freight) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS KumulyativYukPulu
         FROM Orders;
         ```
+
+        ### 🔹 Checkpoint 6: Sorğu Optimallaşdırılması (Query Optimization)
+Bu mərhələdə sorğuların icra sürətini artırmaq və verilənlər bazasının resurslarından səmərəli istifadə etmək üçün indeksləmə və kodun yenidən strukturlaşdırılması üsulları tətbiq edilmişdir.
+
+#### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
+
+*   **Sual 1: Hər sətir üçün təkrar hesablanan ağır alt sorğunu necə sürətləndirə bilərik?**
+    *   **Məntiq:** Hər sətirdə ayrıca işləyən alt sorğunu `INNER JOIN` və `GROUP BY` strukturuna çevirərək bazanın yükünü azaldır.
+    *   **Qeyri-Optimallı variant (Correlated Subquery):**
+        ```sql
+        SELECT o.OrderID, o.CustomerID,
+               (SELECT SUM(od.UnitPrice * od.Quantity) 
+                FROM [Order Details] od 
+                WHERE od.OrderID = o.OrderID) AS TotalAmount
+        FROM Orders o;
+        ```
+    *   **Optimallaşdırılmış variant (INNER JOIN ilə):**
+        ```sql
+        SELECT o.OrderID, o.CustomerID, SUM(od.UnitPrice * od.Quantity) AS TotalAmount
+        FROM Orders o
+        INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
+        GROUP BY o.OrderID, o.CustomerID;
+        ```
+
+*   **Sual 2: Sifariş cədvəlində ölkə və şəhər üzrə axtarışların sürətini necə artıra bilərik?**
+    *   **Məntiq:** Ən çox süzgəc (filtr) tətbiq olunan ölkə və şəhər sütunlarına indeks qoyaraq axtarış müddətini maksimum qısaldır.
+    *   **SQL Kodu (İndeksin Yaradılması):**
+        ```sql
+        CREATE INDEX idx_orders_ship_country_city 
+        ON Orders (ShipCountry, ShipCity);
+        ```
