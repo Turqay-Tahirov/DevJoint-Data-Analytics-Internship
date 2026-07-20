@@ -103,16 +103,16 @@ Bu mərhələdə fərqli cədvəllərdə saxlanılan əlaqəli məlumatları biz
         inner join Customers cus on ord.CustomerID = cus.CustomerID;
         ```
 
-*   **Sual 2: Satılan hər bir məhsulun adını, aid olduğu kateqoriyanı və satış qiymətini necə siyahılaya bilərik?**
+*   **Sual 2: Satılan hər bir məhsulun adını, aid olduğu kateqoriyanı və satış qiymətini necə siyahılaya bilərik?(left join)**
     *   **Məntiq:** `Products` cədvəlini `Categories` ilə birləşdirərək hər bir məhsulun vizual kateqoriya adını onun qiyməti ilə yanaşı gətirir.
     *   **SQL Kodu (`query_2.sql`):**
         ```sql
-        SELECT 
-            p.ProductName AS "Məhsul Adı", 
-            c.CategoryName AS "Kateqoriya", 
-            p.UnitPrice AS "Qiymət"
-        FROM Products p
-        INNER JOIN Categories c ON p.CategoryID = c.CategoryID;
+        select cus.CompanyName as "Müştəri",
+        ord.OrderID as "Sifariş ID",
+        (emp.FirstName || ' ' || emp.LastName) as "Məsul İşçi"
+        from Customers cus
+        left join Orders ord on cus.CustomerID = ord.CustomerID
+        left join Employees emp on ord.EmployeeID = emp.EmployeeID; /
         ```
 
 ---
