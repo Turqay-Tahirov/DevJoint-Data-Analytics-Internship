@@ -77,13 +77,11 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 5. **Sual 5: Fransaya göndərilən və dəyəri 1000$-dan baha olan ilk 5 satış hansıdır?**
    * **Kod faylı:** [`query_5.sql`](./Week_1_SQL/Checkpoint_1/query_5.sql)
    *  ```sql
-        SELECT 
-            o.OrderID, 
-            e.FirstName || ' ' || e.LastName AS "İşçi", 
-            c.CompanyName AS "Müştəri"
-        FROM Orders o
-        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
-        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        select OrderID, CustomerName, ProductName, ExtendedPrice, ShipCountry
+        from Invoices
+        where ShipCountry = 'France' and ExtendedPrice > 1000
+        order by ExtendedPrice desc
+        limit 5;
         ```
    * **Məntiq:** Fransaya gedən və tək məhsul satışı üzrə faktura dəyəri 1000 dollardan yüksək olan ən böyük 5 fərdi satışı gətirir.
      ![Query 5 Result](/images/query_5.png)
