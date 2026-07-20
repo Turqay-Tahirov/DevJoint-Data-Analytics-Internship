@@ -1,4 +1,8 @@
-/*1 inner join*/ 
+/*1 inner join
+1: Hər bir sifarişin ID-si, onu yazan işçi və sifarişi verən müştəri kimdir?
+
+İzah: employees, orders və customers cədvəllərini inner join ilə birləşdirərək həm işçisi,
+həm də müştərisi olan sifarişləri siyahılayır.*/
 
 select ord.OrderID as "Sifariş ID", 
 (emp.FirstName || ' ' || emp.LastName) as "İşçi", 
