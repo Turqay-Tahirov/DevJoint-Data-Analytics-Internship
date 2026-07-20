@@ -53,13 +53,11 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 3. **Sual 3: ABŞ daxilində karqo pulu 150$-dan çox olan ilk 10 baha sifariş hansıdır?**
    * **Kod faylı:** [`query_3.sql`](./Week_1_SQL/Checkpoint_1/query_3.sql)
    *  ```sql
-        SELECT 
-            o.OrderID, 
-            e.FirstName || ' ' || e.LastName AS "İşçi", 
-            c.CompanyName AS "Müştəri"
-        FROM Orders o
-        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
-        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        select OrderID, ShipName, ShipCity, ShipCountry, Freight 
+        from Orders 
+        where ShipCountry = 'USA' and Freight > 150
+        order by Freight desc
+        limit 10;
         ```
    * **Məntiq:** Amerikaya göndərilən və çatdırılma xərci ən yüksək olan 10 böyük sifarişi azalan sıra ilə göstərir.
      ![Query 3 Result](/images/query_3.png)
