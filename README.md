@@ -31,13 +31,11 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 1. **Sual 1: Almaniyadakı ilk 5 müştəri kimlərdir?**
    * **Kod faylı:** [`query_1.sql`](./Week_1_SQL/Checkpoint_1/query_1.sql)
    *  ```sql
-        SELECT 
-            o.OrderID, 
-            e.FirstName || ' ' || e.LastName AS "İşçi", 
-            c.CompanyName AS "Müştəri"
-        FROM Orders o
-        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
-        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        SELECT CustomerID, CompanyName, ContactName, Country  
+        FROM Customers  
+        WHERE Country = 'Germany'
+        ORDER BY CompanyName ASC
+        LIMIT 5;
         ```
    * **Məntiq:** Almaniyada olan müştəriləri əlifba sırası ilə sıralayıb ilk 5 nəticəni gətirir.
      ![Query 1 Result](/images/query_1.png)
