@@ -43,13 +43,9 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 2. **Sual 2: Londonda yaşayan rəhbər şəxslər (Owner və ya Manager) kimlərdir?**
    * **Kod faylı:** [`query_2.sql`](./Week_1_SQL/Checkpoint_1/query_2.sql)
    *  ```sql
-        SELECT 
-            o.OrderID, 
-            e.FirstName || ' ' || e.LastName AS "İşçi", 
-            c.CompanyName AS "Müştəri"
-        FROM Orders o
-        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
-        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        select ContactName, ContactTitle, City, Phone  from Customers 
+        where City = 'London' and (ContactTitle like '%Owner%' or ContactTitle like '%Manager%')
+        ORDER BY ContactName ASC;
         ```
    * **Məntiq:** Londonda yaşayan və vəzifə adında "Owner" və ya "Manager" olan kontaktları tapır.
      ![Query 2 Result](/images/query_2.png)
