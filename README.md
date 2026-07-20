@@ -92,7 +92,7 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 *   **Sual 1: Hər bir sifarişin ID-si, onu yazan işçi və sifarişi verən müştəri kimdir? (inner join)**
     *   **Məntiq:** İzah: employees, orders və customers cədvəllərini inner join ilə birləşdirərək həm işçisi,
  həm də müştərisi olan sifarişləri siyahılayır.
-      * Kod faylı: [`query_5.sql`](.Week_1_SQL/Checkpoint_2/query1_inner-join.sql)
+      * Kod faylı: [`query1_inner-join`](./Week_1_SQL/Checkpoint_2/query1_inner-join.sql)
         ```sql
         select ord.OrderID as "Sifariş ID", (emp.FirstName || ' ' || emp.LastName) as "İşçi",
         cus.CompanyNamxie as "Müştəri"
@@ -104,7 +104,7 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 *   **Sual 2: S2. Bütün müştərilərin və əgər varsa, onların sifarişlərinin siyahısı hansıdır? (left join)**
     *   **Məntiq:** İzah: left join vasitəsilə bütün müştərilər ekrana gətirilir və hələ heç bir sifariş
  verməyən müştərilər də siyahıda qorunur.
-    * * Kod faylı: [`query_5.sql`](.Week_1_SQL/Checkpoint_2/query1_left-join.sql)
+    * * Kod faylı: [`query1_left-join`](./Week_1_SQL/Checkpoint_2/query1_left-join.sql)
         ```sql
         select cus.CompanyName as "Müştəri",
         ord.OrderID as "Sifariş ID",
@@ -119,7 +119,7 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
         *   **Sual 3: 3 Hər bir sifarişin id-si, sifarişi yazan işçini, onun rəhbərini və müştərinin adını necə görə bilərik? (self join)**
     *   **Məntiq:**  'Employees' cədvəli öz-özünə qoşularaq (Self-Join) hər bir sifarişi yazan işçi
  ilə bərabər onun birbaşa rəhbərini də eyni sətirdə göstərir.
-    * Kod faylı: [`query_5.sql`](.Week_1_SQL/Checkpoint_2/query1_self-join.sql)
+    * Kod faylı: [`query1_self-join`](./Week_1_SQL/Checkpoint_2/query1_self-join.sql)
         ```sql
          select ord.OrderID as "Sifariş ID",
         cus.CompanyName as "Müştəri Şirkət",
