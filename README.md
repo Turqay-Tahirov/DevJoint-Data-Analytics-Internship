@@ -30,26 +30,71 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 
 1. **Sual 1: Almaniyadakı ilk 5 müştəri kimlərdir?**
    * **Kod faylı:** [`query_1.sql`](./Week_1_SQL/Checkpoint_1/query_1.sql)
+   *  ```sql
+        SELECT 
+            o.OrderID, 
+            e.FirstName || ' ' || e.LastName AS "İşçi", 
+            c.CompanyName AS "Müştəri"
+        FROM Orders o
+        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        ```
    * **Məntiq:** Almaniyada olan müştəriləri əlifba sırası ilə sıralayıb ilk 5 nəticəni gətirir.
      ![Query 1 Result](/images/query_1.png)
 
 2. **Sual 2: Londonda yaşayan rəhbər şəxslər (Owner və ya Manager) kimlərdir?**
    * **Kod faylı:** [`query_2.sql`](./Week_1_SQL/Checkpoint_1/query_2.sql)
+   *  ```sql
+        SELECT 
+            o.OrderID, 
+            e.FirstName || ' ' || e.LastName AS "İşçi", 
+            c.CompanyName AS "Müştəri"
+        FROM Orders o
+        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        ```
    * **Məntiq:** Londonda yaşayan və vəzifə adında "Owner" və ya "Manager" olan kontaktları tapır.
      ![Query 2 Result](/images/query_2.png)
 
 3. **Sual 3: ABŞ daxilində karqo pulu 150$-dan çox olan ilk 10 baha sifariş hansıdır?**
    * **Kod faylı:** [`query_3.sql`](./Week_1_SQL/Checkpoint_1/query_3.sql)
+   *  ```sql
+        SELECT 
+            o.OrderID, 
+            e.FirstName || ' ' || e.LastName AS "İşçi", 
+            c.CompanyName AS "Müştəri"
+        FROM Orders o
+        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        ```
    * **Məntiq:** Amerikaya göndərilən və çatdırılma xərci ən yüksək olan 10 böyük sifarişi azalan sıra ilə göstərir.
      ![Query 3 Result](/images/query_3.png)
 
 4. **Sual 4: Müştəriyə hələ göndərilməmiş ən təcili ilk 5 sifariş hansıdır?**
    * **Kod faylı:** [`query_4.sql`](./Week_1_SQL/Checkpoint_1/query_4.sql)
+   *  ```sql
+        SELECT 
+            o.OrderID, 
+            e.FirstName || ' ' || e.LastName AS "İşçi", 
+            c.CompanyName AS "Müştəri"
+        FROM Orders o
+        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        ```
    * **Məntiq:** Göndərilmə tarixi (ShippedDate) boş olan sifarişləri tələb olunan çatdırılma tarixinə (RequiredDate) görə artan sıra ilə düzür.
      ![Query 4 Result](/images/query_4.png)
 
 5. **Sual 5: Fransaya göndərilən və dəyəri 1000$-dan baha olan ilk 5 satış hansıdır?**
    * **Kod faylı:** [`query_5.sql`](./Week_1_SQL/Checkpoint_1/query_5.sql)
+   *  ```sql
+        SELECT 
+            o.OrderID, 
+            e.FirstName || ' ' || e.LastName AS "İşçi", 
+            c.CompanyName AS "Müştəri"
+        FROM Orders o
+        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        ```
    * **Məntiq:** Fransaya gedən və tək məhsul satışı üzrə faktura dəyəri 1000 dollardan yüksək olan ən böyük 5 fərdi satışı gətirir.
      ![Query 5 Result](/images/query_5.png)
 
@@ -195,7 +240,7 @@ Bu mərhələdə verilənlər bazasındakı sətirləri qruplaşdırmadan, hər 
             CategoryID, 
             ProductName, 
             UnitPrice,
-            ROW_NUMBER() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS UrunNo,
+            ROW_NUMBER() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS UorunNo,
             RANK() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS QiymetSirasi
         FROM Products;
         ```
