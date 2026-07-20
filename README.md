@@ -92,17 +92,15 @@ Bu mərhələdə fərqli cədvəllərdə saxlanılan əlaqəli məlumatları biz
 
 #### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
 
-*   **Sual 1: Hər bir sifarişin hansı işçi tərəfindən hansı müştəriyə satıldığını necə görə bilərik?**
+*   **Sual 1: Hər bir sifarişin hansı işçi tərəfindən hansı müştəriyə satıldığını necə görə bilərik? (inner join)**
     *   **Məntiq:** `Orders` cədvəlini həm `Employees`, həm də `Customers` cədvəli ilə birləşdirərək satış prosesinin bütün tərəflərini bir yerdə göstərir.
     *   **SQL Kodu (`query_1.sql`):**
         ```sql
-        SELECT 
-            o.OrderID, 
-            e.FirstName || ' ' || e.LastName AS "İşçi", 
-            c.CompanyName AS "Müştəri"
-        FROM Orders o
-        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
-        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        select ord.OrderID as "Sifariş ID", (emp.FirstName || ' ' || emp.LastName) as "İşçi",
+        cus.CompanyName as "Müştəri"
+        from Employees emp
+        inner join Orders ord on emp.EmployeeID = ord.EmployeeID
+        inner join Customers cus on ord.CustomerID = cus.CustomerID;
         ```
 
 *   **Sual 2: Satılan hər bir məhsulun adını, aid olduğu kateqoriyanı və satış qiymətini necə siyahılaya bilərik?**
