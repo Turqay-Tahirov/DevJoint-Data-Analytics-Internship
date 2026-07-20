@@ -65,13 +65,11 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 4. **Sual 4: Müştəriyə hələ göndərilməmiş ən təcili ilk 5 sifariş hansıdır?**
    * **Kod faylı:** [`query_4.sql`](./Week_1_SQL/Checkpoint_1/query_4.sql)
    *  ```sql
-        SELECT 
-            o.OrderID, 
-            e.FirstName || ' ' || e.LastName AS "İşçi", 
-            c.CompanyName AS "Müştəri"
-        FROM Orders o
-        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
-        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        select OrderID, CustomerID, OrderDate, RequiredDate, ShippedDate
+        from Orders 
+        where ShippedDate is null
+        order by RequiredDate asc
+        limit 5;
         ```
    * **Məntiq:** Göndərilmə tarixi (ShippedDate) boş olan sifarişləri tələb olunan çatdırılma tarixinə (RequiredDate) görə artan sıra ilə düzür.
      ![Query 4 Result](/images/query_4.png)
