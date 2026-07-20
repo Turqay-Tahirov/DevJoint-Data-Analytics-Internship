@@ -52,3 +52,163 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
    * **Kod faylı:** [`query_5.sql`](./Week_1_SQL/Checkpoint_1/query_5.sql)
    * **Məntiq:** Fransaya gedən və tək məhsul satışı üzrə faktura dəyəri 1000 dollardan yüksək olan ən böyük 5 fərdi satışı gətirir.
      ![Query 5 Result](/images/query_5.png)
+
+
+### 🔹 Checkpoint 2: JOIN əməliyyatları ilə Cədvəllərin Birləşdirilməsi
+Bu mərhələdə fərqli cədvəllərdə saxlanılan əlaqəli məlumatları biznes tələblərinə uyğun olaraq `INNER JOIN` vasitəsilə birləşdirib tək bir hesabat halına gətirilmişdir.
+
+#### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
+
+*   **Sual 1: Hər bir sifarişin hansı işçi tərəfindən hansı müştəriyə satıldığını necə görə bilərik?**
+    *   **Məntiq:** `Orders` cədvəlini həm `Employees`, həm də `Customers` cədvəli ilə birləşdirərək satış prosesinin bütün tərəflərini bir yerdə göstərir.
+    *   **SQL Kodu (`query_1.sql`):**
+        ```sql
+        SELECT 
+            o.OrderID, 
+            e.FirstName || ' ' || e.LastName AS "İşçi", 
+            c.CompanyName AS "Müştəri"
+        FROM Orders o
+        INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID
+        INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+        ```
+
+*   **Sual 2: Satılan hər bir məhsulun adını, aid olduğu kateqoriyanı və satış qiymətini necə siyahılaya bilərik?**
+    *   **Məntiq:** `Products` cədvəlini `Categories` ilə birləşdirərək hər bir məhsulun vizual kateqoriya adını onun qiyməti ilə yanaşı gətirir.
+    *   **SQL Kodu (`query_2.sql`):**
+        ```sql
+        SELECT 
+            p.ProductName AS "Məhsul Adı", 
+            c.CategoryName AS "Kateqoriya", 
+            p.UnitPrice AS "Qiymət"
+        FROM Products p
+        INNER JOIN Categories c ON p.CategoryID = c.CategoryID;
+        ```
+
+---
+
+### 🔹 Checkpoint 3: GROUP BY / HAVING ilə Aqreqasiya
+Bu mərhələdə datadakı kateqoriyalar üzrə qruplaşdırma (`GROUP BY`) aparılmış və aqreqasiya nəticələrinə xüsusi şərtlər (`HAVING`) tətbiq edilmişdir.
+
+#### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
+
+*   **Sual 1: Sistemdə 10-dan çox sifarişi olan top müştərilər hansılardır?**
+    *   **Məntiq:** Müştəriləri qruplaşdıraraq sifarişlərini sayır və yalnız 10-dan çox sifariş verən aktiv şirkətləri çoxdan aza doğru sıralayır.
+    *   **SQL Kodu (`query_1.sql`):**
+        ```sql
+        SELECT 
+            cus.CompanyName AS "Müştəri Şirkət Adı",
+            COUNT(ord.OrderID) AS "Ümumi Sifariş Sayı"
+        FROM Customers cus
+        INNER JOIN Orders ord ON cus.CustomerID = ord.CustomerID
+        GROUP BY cus.CompanyName
+        HAVING COUNT(ord.OrderID) > 10
+        ORDER BY COUNT(ord.OrderID) DESC;
+        ```
+
+*   **Sual 2: 50-dən çox sifariş göndərilən ən populyar ölkələr hansılardır?**
+    *   **Məntiq:** `Orders` cədvəlini ölkələrə görə qruplaşdırır və heç bir JOIN istifadə etmədən cəmi 50-dən çox sifariş alan ölkələri tapır.
+    *   **SQL Kodu (`query_2.sql`):**
+        ```sql
+        SELECT 
+            ShipCountry AS "Ölkə",
+            COUNT(OrderID) AS "Sifariş Sayı"
+        FROM Orders
+        GROUP BY ShipCountry
+        HAVING COUNT(OrderID) > 50
+        ORDER BY COUNT(OrderID) DESC;
+        ```
+
+*   **Sual 3: Ortalama məhsul qiyməti 30 dollardan baha olan kateqoriyalar hansılardır?**
+    *   **Məntiq:** Məhsulları kateqoriyalarına görə qruplaşdıraraq hər qrupun ortalama qiymətini tapır və yalnız 30 dollarlıq həddi keçən bahalı kateqoriyaları listələyir.
+    *   **SQL Kodu (`query_3.sql`):**
+        ```sql
+        SELECT 
+            CategoryID AS "Kateqoriya ID",
+            AVG(UnitPrice) AS "Ortalama Qiymət",
+            COUNT(ProductID) AS "Məhsul Sayı"
+        FROM Products
+        GROUP BY CategoryID
+        HAVING AVG(UnitPrice) > 30
+        ORDER BY AVG(UnitPrice) DESC;
+        ```
+
+---
+
+### 🔹 Checkpoint 4: Çoxaddımlı Məntiq (Subquery və CTE)
+Bu mərhələdə mürəkkəb biznes məntiqlərini həll etmək üçün həm alt sorğulardan (Subquery), həm də strukturlu müvəqqəti cədvəllərdən (`WITH` - CTE) istifadə edilmişdir.
+
+#### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
+
+*   **Sual 1: Şirkətdəki ən yaşlı işçinin məlumatlarını necə tapa bilərik? (Subquery)**
+    *   **Məntiq:** Alt sorğu ilə bazadakı ən köhnə doğum tarixini tapır və əsas sorğuda həmin tarixə uyğun gələn işçini filtrləyir.
+    *   **SQL Kodu (`query_1.sql`):**
+        ```sql
+        SELECT EmployeeID, FirstName, LastName, Title, BirthDate
+        FROM Employees
+        WHERE BirthDate = (
+            SELECT MIN(BirthDate) 
+            FROM Employees
+        );
+        ```
+
+*   **Sual 2: Parisdən daha çox müştəriyə sahib olan şəhərlər hansılardır? (Subquery)**
+    *   **Məntiq:** `HAVING` daxilindəki alt sorğu ilə Parisin müştəri sayını hesablayır və bu saydan yuxarı olan digər şəhərləri tapır.
+    *   **SQL Kodu (`query_2.sql`):**
+        ```sql
+        SELECT City, COUNT(CustomerID) AS CustomerCount
+        FROM Customers
+        GROUP BY City
+        HAVING COUNT(CustomerID) > (
+            SELECT COUNT(*) 
+            FROM Customers 
+            WHERE City = 'Paris'
+        )
+        ORDER BY CustomerCount DESC;
+        ```
+
+*   **Sual 3: Ümumi ortalama qiymətdən daha baha olan məhsullar hansılardır? (CTE - WITH)**
+    *   **Məntiq:** `WITH` bloku (CTE) vasitəsilə əvvəlcə bütün məhsulların ortalama qiymətini hesablayır, sonra isə əsas sorğuda bu ortalamanı keçən məhsulları filtrləyir.
+    *   **SQL Kodu (`query_3.sql`):**
+        ```sql
+        WITH AvgPriceCTE AS (
+            SELECT AVG(UnitPrice) AS AvgPrice 
+            FROM Products
+        )
+        SELECT p.ProductID, p.ProductName, p.UnitPrice, p.UnitsInStock
+        FROM Products p, AvgPriceCTE a
+        WHERE p.UnitPrice > a.AvgPrice
+        ORDER BY p.UnitPrice DESC;
+        ```
+
+---
+
+### 🔹 Checkpoint 5: Window Funksiyaları
+Bu mərhələdə verilənlər bazasındakı sətirləri qruplaşdırmadan, hər sətir üzrə analitik hesabatlar aparmaq üçün `ROW_NUMBER`, `RANK` və running total (`SUM() OVER`) funksiyalarından istifadə edilmişdir.
+
+#### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
+
+*   **Sual 1: Hər kateqoriya daxilində məhsulları qiymətinə görə necə nömrələyə və sıralaya bilərik?**
+    *   **Məntiq:** `ROW_NUMBER` ilə hər kateqoriya daxilində sətirləri unikal nömrələyir, `RANK` ilə isə eyni qiymətə malik məhsullara eyni dərəcəni verərək sıralayır.
+    *   **SQL Kodu (`query_1.sql`):**
+        ```sql
+        SELECT 
+            CategoryID, 
+            ProductName, 
+            UnitPrice,
+            ROW_NUMBER() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS UrunNo,
+            RANK() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS QiymetSirasi
+        FROM Products;
+        ```
+
+*   **Sual 2: Hər bir müştərinin tarixlər üzrə artan templə (Running Total) cəmi nə qədər karqo pulu ödədiyini necə görə bilərik?**
+    *   **Məntiq:** `SUM() OVER` funksiyasından istifadə edərək, hər müştərinin sifariş tarixləri ardıcıllığı ilə etdiyi karqo xərclərini üst-üstə toplayaraq kumulyativ cəm yaradır.
+    *   **SQL Kodu (`query_2.sql`):**
+        ```sql
+        SELECT 
+            CustomerID, 
+            OrderID, 
+            OrderDate, 
+            Freight,
+            SUM(Freight) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS KumulyativYukPulu
+        FROM Orders;
+        ```
