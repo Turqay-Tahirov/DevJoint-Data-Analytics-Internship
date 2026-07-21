@@ -83,6 +83,7 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
         order by ExtendedPrice desc
         limit 5;
         ```
+      
    * **Məntiq:** Fransaya gedən və tək məhsul satışı üzrə faktura dəyəri 1000 dollardan yüksək olan ən böyük 5 fərdi satışı gətirir.
      ![Query 5 Result](/images/query_5.png)
 
