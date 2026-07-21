@@ -264,30 +264,42 @@ Bu mərhələdə verilənlər bazasındakı sətirləri qruplaşdırmadan, hər 
         ### 🔹 Checkpoint 6: Sorğu Optimallaşdırılması (Query Optimization)
 Bu mərhələdə sorğuların icra sürətini artırmaq və verilənlər bazasının resurslarından səmərəli istifadə etmək üçün indeksləmə və kodun yenidən strukturlaşdırılması üsulları tətbiq edilmişdir.
 
-#### 🔍 Sorğular, Biznes Məntiqi və Kodlar:
+## ⚡ SQL Query Optimization (Sorğu Optimallaşdırılması)
 
-*   **Sual 1: Hər sətir üçün təkrar hesablanan ağır alt sorğunu necə sürətləndirə bilərik?**
-    *   **Məntiq:** Hər sətirdə ayrıca işləyən alt sorğunu `INNER JOIN` və `GROUP BY` strukturuna çevirərək bazanın yükünü azaldır.
-    *   **Qeyri-Optimallı variant (Correlated Subquery):**
-        ```sql
-        SELECT o.OrderID, o.CustomerID,
-               (SELECT SUM(od.UnitPrice * od.Quantity) 
-                FROM [Order Details] od 
-                WHERE od.OrderID = o.OrderID) AS TotalAmount
-        FROM Orders o;
-        ```
-    *   **Optimallaşdırılmış variant (INNER JOIN ilə):**
-        ```sql
-        SELECT o.OrderID, o.CustomerID, SUM(od.UnitPrice * od.Quantity) AS TotalAmount
-        FROM Orders o
-        INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
-        GROUP BY o.OrderID, o.CustomerID;
-        ```
+Bu bölmədə verilənlər bazasının performansını artırmaq, resurslardan səmərəli istifadə etmək və sorğuların icra sürətini maksimuma çatdırmaq üçün tətbiq olunan optimallaşdırma üsulları göstərilmişdir.
 
-*   **Sual 2: Sifariş cədvəlində ölkə və şəhər üzrə axtarışların sürətini necə artıra bilərik?**
-    *   **Məntiq:** Ən çox süzgəc (filtr) tətbiq olunan ölkə və şəhər sütunlarına indeks qoyaraq axtarış müddətini maksimum qısaldır.
-    *   **SQL Kodu (İndeksin Yaradılması):**
-        ```sql
-        CREATE INDEX idx_orders_ship_country_city 
-        ON Orders (ShipCountry, ShipCity);
-        ```
+---
+
+### 1. Correlated Subquery-nin `INNER JOIN` ilə Əvəzlənməsi
+
+* **Problem (Köhnə Variant):** Cədvəldə milyonlarla sətir olduqda, mötərizənin daxilindəki alt sorğu hər bir sətir üçün təkrar-təkrar (milyonlarla dəfə) işləyir və bazanı tamamilə dondurur.
+* **Həll (Yeni Variant):** `INNER JOIN` və `GROUP BY` strukturundan istifadə edərək iki cədvəl bir-birinə bağlanmışdır. Bu zaman verilənlər bazası məlumatları cəmi 1 dəfəyə oxuyur və ümumi məbləği dərhal hesablayır.
+
+#### ❌ Köhnə (Ağır və Performansı Aşağı) Variant:
+```sql
+SELECT o.OrderID, o.CustomerID,
+       (SELECT SUM(od.UnitPrice * od.Quantity) 
+        FROM [Order Details] od 
+        WHERE od.OrderID = o.OrderID) AS TotalAmount
+FROM Orders o;
+```
+
+Yeni (Optimallaşdırılmış və Sürətli) Variant:
+
+```sql
+SELECT o.OrderID, o.CustomerID, SUM(od.UnitPrice * od.Quantity) AS TotalAmount
+FROM Orders o
+INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
+GROUP BY o.OrderID, o.CustomerID;
+```
+
+### 2. İndeksləmə (Index) ilə Axtarışın Sürətləndirilməsi
+
+* **Problem:** Cədvəldə ölkə və ya şəhərə görə filtrasiya apararkən, SQL lazımi məlumatı tapmaq üçün milyonlarla sətri tək-tək oxumaq (Full Table Scan) məcburiyyətində qalırdı.
+* **Həll:** `ShipCountry` və `ShipCity` sütunları üzərində kompozit indeks yaradılmışdır. Bu indeks kitabın sonundakı mündəricat kimi işləyərək, SQL-in axtarılan ölkə və şəhəri bütün cədvəli gəzmədən, nöqtə atışı ilə saniyələr daxilində tapmasını təmin edir.
+
+#### 🛠️ İndeksin Yaradılması Kodu:
+```sql
+CREATE INDEX idx_orders_ship_country_city 
+ON Orders (ShipCountry, ShipCity);
+```
