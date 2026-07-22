@@ -116,7 +116,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
         ```
 
 
-
         *   **Sual 3: 3 Hər bir sifarişin id-si, sifarişi yazan işçini, onun rəhbərini və müştərinin adını necə görə bilərik? (self join)**
     *   **Məntiq:**  'Employees' cədvəli öz-özünə qoşularaq (Self-Join) hər bir sifarişi yazan işçi
  ilə bərabər onun birbaşa rəhbərini də eyni sətirdə göstərir.
