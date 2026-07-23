@@ -147,7 +147,27 @@ ORDER BY p.UnitPrice DESC;
 
 /*Checkpoint-5*/
 
+/*Sual 1: Hər kateqoriya daxilində məhsulları qiymətinə görə necə nömrələyə və sıralaya bilərik?
+Məntiq: ROW_NUMBER ilə hər kateqoriya daxilində sətirləri unikal nömrələyir, RANK ilə isə eyni qiymətə malik məhsullara eyni dərəcəni verərək sıralayır.*/
+SELECT 
+    CategoryID, 
+    ProductName, 
+    UnitPrice,
+    ROW_NUMBER() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS UorunNo,
+    RANK() OVER (PARTITION BY CategoryID ORDER BY UnitPrice DESC) AS QiymetSirasi
+FROM Products;
 
+
+/*Sual 2: Hər bir müştərinin tarixlər üzrə artan templə (Running Total) cəmi nə qədər karqo pulu ödədiyini necə görə bilərik?
+Məntiq: SUM() OVER funksiyasından istifadə edərək, hər müştərinin sifariş tarixləri ardıcıllığı ilə etdiyi karqo xərclərini üst-üstə toplayaraq kumulyativ cəm yaradır.*/
+
+SELECT 
+    CustomerID, 
+    OrderID, 
+    OrderDate, 
+    Freight,
+    SUM(Freight) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS KumulyativYukPulu
+FROM Orders;
 
 
 
