@@ -29,7 +29,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 #### 🔍 Sorğular və İzahları:
 
 1. **Sual 1: Almaniyadakı ilk 5 müştəri kimlərdir?**
-   * **Kod faylı:** [`query_1.sql`](./Week_1_SQL/Checkpoint_1/query_1.sql)
    *  ```sql
         SELECT CustomerID, CompanyName, ContactName, Country  
         FROM Customers  
@@ -39,7 +38,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
         ```
    * **Məntiq:** Almaniyada olan müştəriləri əlifba sırası ilə sıralayıb ilk 5 nəticəni gətirir.
 2. **Sual 2: Londonda yaşayan rəhbər şəxslər (Owner və ya Manager) kimlərdir?**
-   * **Kod faylı:** [`query_2.sql`](./Week_1_SQL/Checkpoint_1/query_2.sql)
    *  ```sql
         select ContactName, ContactTitle, City, Phone  from Customers 
         where City = 'London' and (ContactTitle like '%Owner%' or ContactTitle like '%Manager%')
@@ -48,7 +46,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
    * **Məntiq:** Londonda yaşayan və vəzifə adında "Owner" və ya "Manager" olan kontaktları tapır.
 
 3. **Sual 3: ABŞ daxilində karqo pulu 150$-dan çox olan ilk 10 baha sifariş hansıdır?**
-   * **Kod faylı:** [`query_3.sql`](./Week_1_SQL/Checkpoint_1/query_3.sql)
    *  ```sql
         select OrderID, ShipName, ShipCity, ShipCountry, Freight 
         from Orders 
@@ -59,7 +56,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
    * **Məntiq:** Amerikaya göndərilən və çatdırılma xərci ən yüksək olan 10 böyük sifarişi azalan sıra ilə göstərir.
 
 4. **Sual 4: Müştəriyə hələ göndərilməmiş ən təcili ilk 5 sifariş hansıdır?**
-   * **Kod faylı:** [`query_4.sql`](./Week_1_SQL/Checkpoint_1/query_4.sql)
    *  ```sql
         select OrderID, CustomerID, OrderDate, RequiredDate, ShippedDate
         from Orders 
@@ -70,7 +66,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
    * **Məntiq:** Göndərilmə tarixi (ShippedDate) boş olan sifarişləri tələb olunan çatdırılma tarixinə (RequiredDate) görə artan sıra ilə düzür.
 
 5. **Sual 5: Fransaya göndərilən və dəyəri 1000$-dan baha olan ilk 5 satış hansıdır?**
-   * **Kod faylı:** [`query_5.sql`](./Week_1_SQL/Checkpoint_1/query_5.sql)
    *  ```sql
         select OrderID, CustomerName, ProductName, ExtendedPrice, ShipCountry
         from Invoices
@@ -87,7 +82,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 *   **Sual 1: Hər bir sifarişin ID-si, onu yazan işçi və sifarişi verən müştəri kimdir? (inner join)**
     *   **Məntiq:** İzah: employees, orders və customers cədvəllərini inner join ilə birləşdirərək həm işçisi,
  həm də müştərisi olan sifarişləri siyahılayır.
-      * Kod faylı: [`query1_inner-join`](./Week_1_SQL/Checkpoint_2/query1_inner-join.sql)
         ```sql
         select ord.OrderID as "Sifariş ID", (emp.FirstName || ' ' || emp.LastName) as "İşçi",
         cus.CompanyNamxie as "Müştəri"
@@ -99,7 +93,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
 *   **Sual 2: S2. Bütün müştərilərin və əgər varsa, onların sifarişlərinin siyahısı hansıdır? (left join)**
     *   **Məntiq:** İzah: left join vasitəsilə bütün müştərilər ekrana gətirilir və hələ heç bir sifariş
  verməyən müştərilər də siyahıda qorunur.
-    * * Kod faylı: [`query1_left-join`](./Week_1_SQL/Checkpoint_2/query1_left-join.sql)
         ```sql
         select cus.CompanyName as "Müştəri",
         ord.OrderID as "Sifariş ID",
@@ -113,7 +106,6 @@ Bu mərhələdə verilmiş şərtlərə uyğun olaraq məlumatların süzgəclə
         *   **Sual 3: 3 Hər bir sifarişin id-si, sifarişi yazan işçini, onun rəhbərini və müştərinin adını necə görə bilərik? (self join)**
     *   **Məntiq:**  'Employees' cədvəli öz-özünə qoşularaq (Self-Join) hər bir sifarişi yazan işçi
  ilə bərabər onun birbaşa rəhbərini də eyni sətirdə göstərir.
-    * Kod faylı: [`query1_self-join`](./Week_1_SQL/Checkpoint_2/query1_self-join.sql)
         ```sql
          select ord.OrderID as "Sifariş ID",
         cus.CompanyName as "Müştəri Şirkət",
@@ -134,7 +126,6 @@ Bu mərhələdə datadakı kateqoriyalar üzrə qruplaşdırma (`GROUP BY`) apar
 
 *   **Sual 1: Sistemdə 10-dan çox sifarişi olan top müştərilər hansılardır?**
     *   **Məntiq:** Müştəriləri qruplaşdıraraq sifarişlərini sayır və yalnız 10-dan çox sifariş verən aktiv şirkətləri çoxdan aza doğru sıralayır.
-    *   **SQL Kodu (`query_1.sql`):**
         ```sql
         SELECT 
             cus.CompanyName AS "Müştəri Şirkət Adı",
@@ -148,7 +139,6 @@ Bu mərhələdə datadakı kateqoriyalar üzrə qruplaşdırma (`GROUP BY`) apar
 
 *   **Sual 2: 50-dən çox sifariş göndərilən ən populyar ölkələr hansılardır?**
     *   **Məntiq:** `Orders` cədvəlini ölkələrə görə qruplaşdırır və heç bir JOIN istifadə etmədən cəmi 50-dən çox sifariş alan ölkələri tapır.
-    *   **SQL Kodu (`query_2.sql`):**
         ```sql
         SELECT 
             ShipCountry AS "Ölkə",
@@ -161,7 +151,6 @@ Bu mərhələdə datadakı kateqoriyalar üzrə qruplaşdırma (`GROUP BY`) apar
 
 *   **Sual 3: Ortalama məhsul qiyməti 30 dollardan baha olan kateqoriyalar hansılardır?**
     *   **Məntiq:** Məhsulları kateqoriyalarına görə qruplaşdıraraq hər qrupun ortalama qiymətini tapır və yalnız 30 dollarlıq həddi keçən bahalı kateqoriyaları listələyir.
-    *   **SQL Kodu (`query_3.sql`):**
         ```sql
         SELECT 
             CategoryID AS "Kateqoriya ID",
@@ -182,7 +171,6 @@ Bu mərhələdə mürəkkəb biznes məntiqlərini həll etmək üçün həm alt
 
 *   **Sual 1: Şirkətdəki ən yaşlı işçinin məlumatlarını necə tapa bilərik? (Subquery)**
     *   **Məntiq:** Alt sorğu ilə bazadakı ən köhnə doğum tarixini tapır və əsas sorğuda həmin tarixə uyğun gələn işçini filtrləyir.
-    *   **SQL Kodu (`query_1.sql`):**
         ```sql
         SELECT EmployeeID, FirstName, LastName, Title, BirthDate
         FROM Employees
@@ -194,7 +182,6 @@ Bu mərhələdə mürəkkəb biznes məntiqlərini həll etmək üçün həm alt
 
 *   **Sual 2: Parisdən daha çox müştəriyə sahib olan şəhərlər hansılardır? (Subquery)**
     *   **Məntiq:** `HAVING` daxilindəki alt sorğu ilə Parisin müştəri sayını hesablayır və bu saydan yuxarı olan digər şəhərləri tapır.
-    *   **SQL Kodu (`query_2.sql`):**
         ```sql
         SELECT City, COUNT(CustomerID) AS CustomerCount
         FROM Customers
@@ -209,7 +196,6 @@ Bu mərhələdə mürəkkəb biznes məntiqlərini həll etmək üçün həm alt
 
 *   **Sual 3: Ümumi ortalama qiymətdən daha baha olan məhsullar hansılardır? (CTE - WITH)**
     *   **Məntiq:** `WITH` bloku (CTE) vasitəsilə əvvəlcə bütün məhsulların ortalama qiymətini hesablayır, sonra isə əsas sorğuda bu ortalamanı keçən məhsulları filtrləyir.
-    *   **SQL Kodu (`query_3.sql`):**
         ```sql
         WITH AvgPriceCTE AS (
             SELECT AVG(UnitPrice) AS AvgPrice 
@@ -230,7 +216,6 @@ Bu mərhələdə verilənlər bazasındakı sətirləri qruplaşdırmadan, hər 
 
 *   **Sual 1: Hər kateqoriya daxilində məhsulları qiymətinə görə necə nömrələyə və sıralaya bilərik?**
     *   **Məntiq:** `ROW_NUMBER` ilə hər kateqoriya daxilində sətirləri unikal nömrələyir, `RANK` ilə isə eyni qiymətə malik məhsullara eyni dərəcəni verərək sıralayır.
-    *   **SQL Kodu (`query_1.sql`):**
         ```sql
         SELECT 
             CategoryID, 
@@ -243,7 +228,6 @@ Bu mərhələdə verilənlər bazasındakı sətirləri qruplaşdırmadan, hər 
 
 *   **Sual 2: Hər bir müştərinin tarixlər üzrə artan templə (Running Total) cəmi nə qədər karqo pulu ödədiyini necə görə bilərik?**
     *   **Məntiq:** `SUM() OVER` funksiyasından istifadə edərək, hər müştərinin sifariş tarixləri ardıcıllığı ilə etdiyi karqo xərclərini üst-üstə toplayaraq kumulyativ cəm yaradır.
-    *   **SQL Kodu (`query_2.sql`):**
         ```sql
         SELECT 
             CustomerID, 
