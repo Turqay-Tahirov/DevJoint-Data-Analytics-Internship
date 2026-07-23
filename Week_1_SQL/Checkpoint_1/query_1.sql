@@ -69,3 +69,37 @@ left join Employees mgr on emp.ReportsTo = mgr.EmployeeID;
 
 /*CheckPoint-3*/
 
+
+/*Sual 1: Sistemdə 10-dan çox sifarişi olan top müştərilər hansılardır?
+Məntiq: Müştəriləri qruplaşdıraraq sifarişlərini sayır və yalnız 10-dan çox sifariş verən aktiv şirkətləri çoxdan aza doğru sıralayır.*/
+SELECT 
+ cus.CompanyName AS "Müştəri Şirkət Adı",
+ COUNT(ord.OrderID) AS "Ümumi Sifariş Sayı"
+FROM Customers cus
+INNER JOIN Orders ord ON cus.CustomerID = ord.CustomerID
+GROUP BY cus.CompanyName
+HAVING COUNT(ord.OrderID) > 10
+ORDER BY COUNT(ord.OrderID) DESC;
+
+
+/*Sual 2: 50-dən çox sifariş göndərilən ən populyar ölkələr hansılardır?
+Məntiq: Orders cədvəlini ölkələrə görə qruplaşdırır və heç bir JOIN istifadə etmədən cəmi 50-dən çox sifariş alan ölkələri tapır.*/
+SELECT 
+ ShipCountry AS "Ölkə",
+ COUNT(OrderID) AS "Sifariş Sayı"
+FROM Orders
+GROUP BY ShipCountry
+HAVING COUNT(OrderID) > 50
+ORDER BY COUNT(OrderID) DESC;
+
+
+/*Sual 3: Ortalama məhsul qiyməti 30 dollardan baha olan kateqoriyalar hansılardır?
+Məntiq: Məhsulları kateqoriyalarına görə qruplaşdıraraq hər qrupun ortalama qiymətini tapır və yalnız 30 dollarlıq həddi keçən bahalı kateqoriyaları listələyir.*/
+SELECT 
+ CategoryID AS "Kateqoriya ID",
+ AVG(UnitPrice) AS "Ortalama Qiymət",
+ COUNT(ProductID) AS "Məhsul Sayı"
+FROM Products
+GROUP BY CategoryID
+HAVING AVG(UnitPrice) > 30
+ORDER BY AVG(UnitPrice) DESC;
