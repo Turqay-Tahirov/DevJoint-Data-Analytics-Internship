@@ -37,6 +37,7 @@ order by ExtendedPrice desc
 limit 5;
 
 
+
 /*CheckPoint-2*/
 
 /*Sual 1: Hər bir sifarişin ID-si, onu yazan işçi və sifarişi verən müştəri kimdir? (inner join)
@@ -67,8 +68,9 @@ inner join Orders ord on cus.CustomerID = ord.CustomerID
 left JOIN Employees emp on ord.EmployeeID = emp.EmployeeID
 left join Employees mgr on emp.ReportsTo = mgr.EmployeeID;
 
-/*CheckPoint-3*/
 
+
+/*CheckPoint-3*/
 
 /*Sual 1: Sistemdə 10-dan çox sifarişi olan top müştərilər hansılardır?
 Məntiq: Müştəriləri qruplaşdıraraq sifarişlərini sayır və yalnız 10-dan çox sifariş verən aktiv şirkətləri çoxdan aza doğru sıralayır.*/
@@ -103,3 +105,70 @@ FROM Products
 GROUP BY CategoryID
 HAVING AVG(UnitPrice) > 30
 ORDER BY AVG(UnitPrice) DESC;
+
+
+
+/*Checkpoint-4*/
+
+/*Sual 1: Şirkətdəki ən yaşlı işçinin məlumatlarını necə tapa bilərik? (Subquery)
+Məntiq: Alt sorğu ilə bazadakı ən köhnə doğum tarixini tapır və əsas sorğuda həmin tarixə uyğun gələn işçini filtrləyir.*/
+SELECT EmployeeID, FirstName, LastName, Title, BirthDate
+FROM Employees
+WHERE BirthDate = (
+    SELECT MIN(BirthDate) 
+    FROM Employees
+);
+
+/*Sual 2: Parisdən daha çox müştəriyə sahib olan şəhərlər hansılardır? (Subquery)
+Məntiq: HAVING daxilindəki alt sorğu ilə Parisin müştəri sayını hesablayır və bu saydan yuxarı olan digər şəhərləri tapır.*/
+SELECT City, COUNT(CustomerID) AS CustomerCount
+FROM Customers
+GROUP BY City
+HAVING COUNT(CustomerID) > (
+    SELECT COUNT(*) 
+    FROM Customers 
+    WHERE City = 'Paris'
+)
+ORDER BY CustomerCount DESC;
+
+
+/*Sual 3: Ümumi ortalama qiymətdən daha baha olan məhsullar hansılardır? (CTE - WITH)
+Məntiq: WITH bloku (CTE) vasitəsilə əvvəlcə bütün məhsulların ortalama qiymətini hesablayır, sonra isə əsas sorğuda bu ortalamanı keçən məhsulları filtrləyir.*/
+WITH AvgPriceCTE AS (
+    SELECT AVG(UnitPrice) AS AvgPrice 
+    FROM Products
+)
+SELECT p.ProductID, p.ProductName, p.UnitPrice, p.UnitsInStock
+FROM Products p, AvgPriceCTE a
+WHERE p.UnitPrice > a.AvgPrice
+ORDER BY p.UnitPrice DESC;
+
+
+
+/*Checkpoint-5*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Checkpoint-6*/
