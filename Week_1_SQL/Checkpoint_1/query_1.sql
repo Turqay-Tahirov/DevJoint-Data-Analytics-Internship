@@ -170,25 +170,28 @@ SELECT
 FROM Orders;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*Checkpoint-6*/
+
+/*Problem (Köhnə Variant): Cədvəldə milyonlarla sətir olduqda, mötərizənin daxilindəki alt sorğu hər bir sətir üçün təkrar-təkrar (milyonlarla dəfə) işləyir və bazanı tamamilə dondurur.
+Həll (Yeni Variant): INNER JOIN və GROUP BY strukturundan istifadə edərək iki cədvəl bir-birinə bağlanmışdır. Bu zaman verilənlər bazası məlumatları cəmi 1 dəfəyə oxuyur və ümumi məbləği dərhal hesablayır.
+❌ Köhnə (Ağır və Performansı Aşağı) Variant:*/
+SELECT o.OrderID, o.CustomerID,
+       (SELECT SUM(od.UnitPrice * od.Quantity) 
+        FROM [Order Details] od 
+        WHERE od.OrderID = o.OrderID) AS TotalAmount
+FROM Orders o;
+
+
+/*Yeni (Optimallaşdırılmış və Sürətli) Variant:*/
+SELECT o.OrderID, o.CustomerID, SUM(od.UnitPrice * od.Quantity) AS TotalAmount
+FROM Orders o
+INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
+GROUP BY o.OrderID, o.CustomerID;
+
+
+/*2. İndeksləmə (Index) ilə Axtarışın Sürətləndirilməsi
+Problem: Cədvəldə ölkə və ya şəhərə görə filtrasiya apararkən, SQL lazımi məlumatı tapmaq üçün milyonlarla sətri tək-tək oxumaq (Full Table Scan) məcburiyyətində qalırdı.
+Həll: ShipCountry və ShipCity sütunları üzərində kompozit indeks yaradılmışdır. Bu indeks kitabın sonundakı mündəricat kimi işləyərək, SQL-in axtarılan ölkə və şəhəri bütün cədvəli gəzmədən, nöqtə atışı ilə saniyələr daxilində tapmasını təmin edir.
+🛠️ İndeksin Yaradılması Kodu:*/
+CREATE INDEX idx_orders_ship_country_city 
+ON Orders (ShipCountry, ShipCity);
