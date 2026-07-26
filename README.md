@@ -161,7 +161,6 @@ Bu mərhələdə datadakı kateqoriyalar üzrə qruplaşdırma (`GROUP BY`) apar
         HAVING AVG(UnitPrice) > 30
         ORDER BY AVG(UnitPrice) DESC;
         ```
-
 ---
 
 ### 🔹 Checkpoint 4: Çoxaddımlı Məntiq (Subquery və CTE)
