@@ -348,3 +348,72 @@ Biznesin mövcud vəziyyətini qiymətləndirmək üçün 7 kritik suala cavab a
 * **Geri qaytarılma statusu (Returned) üçün:**
   ```excel
   =XLOOKUP(@B:B,Returns!A:A,Returns!B:B,"No")
+
+  Şərh: Sifariş kodunu Returns vərəqində axtarır, tapmadıqda xəta verməməsi üçün hüceyrəyə "No" yazır.
+
+###Tədarükçü (Supplier) məlumatı üçün:
+
+=XLOOKUP(@P:P,Products!A:A,Products!C:C,"Bilinmir")
+Şərh: Məhsul koduna əsasən Products vərəqindən müvafiq tədarükçü şirkətin adını cədvələ köçürür.
+
+Maya dəyəri (Unit Cost) üçün:
+
+Excel
+=INDEX(Products!D:D, MATCH(Orders!P2, Products!A:A, 0))
+Şərh: MATCH funksiyası məhsul kodunun digər vərəqdəki sətir nömrəsini tapır, INDEX isə həmin sətirə uyğun maya dəyərini gətirir.
+
+###Checkpoint 4: Hesablanan Sahələr və Məntiqi Funksiyalar
+
+Şərtləri qruplaşdırmaq və əməliyyatları kateqoriyalara ayırmaq məqsədilə ana cədvəldə iki yeni analitik sütun yaradılmışdır:
+
+Region üzrə ümumi satış həcmi (Region_Total_Sales):
+
+Excel
+=SUMIFS(T:T, O:O, O2)
+Şərh: Cari sətirdəki regiona uyğun gələn bütün satışları cəmləyərək hər bir bölgənin ümumi satış gücünü dinamik təyin edir.
+
+Rentabellilik statusu (Status):
+
+Excel
+=IF(W2 < 0, "Zərər", "Gəlir")
+Şərh: Mənfəət (Profit) dəyəri sıfırdan kiçik olduqda "Zərər", əks halda "Gəlir" statusu formalaşdırır.
+
+###Checkpoint 5: Dashboard və Şərti Formatlaşdırma
+Datanın vizual analizi və əsas performans göstəricilərinin (KPI) izlənilməsi üçün 3 fərqli qrafik tipindən ibarət dinamik dashboard hazırlanmışdır.
+
+İstifadə Olunan Qrafik Tipləri:
+Pie Chart (Dairəvi diaqram): Regionlar üzrə ümumi satış payını və bazar bölgüsünü göstərmək üçün.
+
+Column Chart (Sütunlu diaqram): Kateqoriyalar üzrə mənfəət/zərər müqayisəsini vizuallaşdırmaq üçün.
+
+Bar Chart (Üfüqi sütunlu diaqram): Tranzaksiyaların gəlir/zərər statuslarının say və həcmi üzrə bölgüsünü izləmək üçün.
+
+Şərti Formatlaşdırma (Conditional Formatting):
+Biznes hədəflərini vizual olaraq anında fərqləndirmək üçün pivot cədvəllərdə şərti formatlaşdırma tətbiq olunmuşdur. Şirkətə yüksək xalis mənfəət qazandıran və hədəfi keçən kateqoriyalar (məsələn, Office Supplies) xüsusi yaşıl rəng indikatoru ilə vurğulanmışdır.
+
+###Checkpoint 6: Formulaların Texniki Quruluşu və Sənədləşmə
+1. Pivot Cədvəllərin Quruluş Arxitekturası (Checkpoint 2)
+Məhsul Portfeli: Satırlar: Category -> Sub-Category | Dəyərlər: Sum of Profit
+
+* **Region və Şəhər:** Satırlar: Region -> City | Dəyərlər: Sum of Sales, Sum of Profit | Filtr: Profit < 0
+
+* **Endirim Strategiyası:** Satırlar: Discount | Dəyərlər: Sum of Profit
+
+* **Müştəri Riskləri:** Satırlar: Customer Name | Dəyərlər: Sum of Profit | Sıralama: Profit (Artan sıra ilə)
+
+* **İllik Trend:** Satırlar: Order Date (Years) | Dəyərlər: Sum of Sales, Sum of Profit
+
+* **Mövsümlülük:** Satırlar: Order Date (Months) | Dəyərlər: Count of Order ID
+
+* **Aylıq Trend:** Satırlar: Order Date (Months) | Sütunlar: Order Date (Years) | Dəyərlər: Sum of Profit
+
+###2. Dashboard Cədvəl Quruluşları (Checkpoint 5)
+* **Regionlar üzrə Satış Payı (Pie Chart):** Satırlar: Region | Dəyərlər: Sum of Sales
+
+* **Kateqoriyalar üzrə Mənfəət (Column Chart):** Satırlar: Category | Dəyərlər: Sum of Profit
+
+* **Statusun Sayı (Bar Chart):** Satırlar: Status | Dəyərlər: Count of Status
+
+* **Qeyd:** Dashboard vizualının daha peşəkar görünməsi üçün bütün Pivot qrafiklərinin sahə düymələri (Field Buttons) gizlədilmişdir.
+
+🔗 Dashboard Faylına baxış: Google Drive Linki
