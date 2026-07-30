@@ -1,6 +1,7 @@
 # 📊 DevJoint Data Analytics Internship Program
 
 Bu repozitoriya, **DevJoint** tərəfindən təşkil olunmuş 4 həftəlik Data Analitika təcrübə proqramı çərçivəsində hazırladığım bütün tapşırıqları, SQL sorğularını, data analizlərini və hesabatlarımı özündə birləşdirir.
+
 --------
 
 # 📊 SQL Practice — Northwind Case Study
