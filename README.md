@@ -335,7 +335,39 @@ ON Orders (ShipCountry, ShipCity);
 
 # DevJoint Təcrübə Proqramı — Satış və Mənfəət Analizi Portfel Layihəsi
 
-Bu layihədə şirkətin satış, mənfəət, müştəri və region məlumatları analiz edilmiş, Python və Excel vasitəsilə məlumatların təmizlənməsi (Data Cleaning), inteqrasiyası, biznes suallarının cavablandırılması və interaktiv hesabatlığın (Dashboard) qurulması mərhələləri icra olunmuşdur.
+Bu layihədə şirkətin satış, mənfəət, müştəri və region məlumatları analiz edilmiş, Excel vasitəsilə məlumatların təmizlənməsi (Data Cleaning), inteqrasiyası, biznes suallarının cavablandırılması və interaktiv hesabatlığın (Dashboard) qurulması mərhələləri icra olunmuşdur.
+
+## 🔑 Week 2: Excel ilə Data Analitikası və Dashboard
+
+Bu həftənin məqsədi bazadan çıxarılan xam verilənlərin Excel mühitində təmizlənməsi, funksiyalar vasitəsilə analiz edilməsi və rəhbərlik üçün dinamik (interaktiv) hesabat panelinin (Dashboard) hazırlanmasıdır.
+
+### 📌 Əhatə Olunan Excel Mövzuları
+| # | Mövzu | Təsvir |
+| :--- | :--- | :--- |
+| **1** | **Data Cleaning** | Unikal dəyərlərin tapılması, boşluqların (`null`) və təkrarlanan sətirlərin təmizlənməsi |
+| **2** | **Logical Formulas** | `IF`, `AND`, `OR`, `IFS` funksiyaları ilə şərti sütunların və kateqoriyaların yaradılması |
+| **3** | **Lookup Functions** | `XLOOKUP`, `VLOOKUP`, `INDEX` & `MATCH` vasitəsilə fərqli vərəqlərdən dataların çəkilməsi |
+| **4** | **Aggregation** | `SUMIFS`, `COUNTIFS`, `AVERAGEIFS` funksiyaları ilə şərtə bağlı dinamik hesablamalar |
+| **5** | **Pivot Tables** | Böyük verilənlər çoxluğunun sürətli şəkildə qruplaşdırılması və çarpaz analizlər |
+| **6** | **Data Visualization** | Biznes trendlərini göstərən qrafiklərin (Xətti, Sütunlu, Dairəvi) düzgün seçilməsi |
+| **7** | **Interactive Elements** | Slicer-lər (Dilimləyicilər) və Timeline vasitəsilə interaktiv idarəetmə panelinin qurulması |
+
+### 🗂️ Excel Checkpoint-lər
+| Checkpoint | Əhatə Etdiyi Analitik Mövzular |
+| :--- | :--- |
+| **Checkpoint 1** | Data transformaciyası, mətn funksiyaları (`LEFT`, `RIGHT`, `MID`) və formatların düzəldilməsi |
+| **Checkpoint 2** | `XLOOKUP` və inkişaf etmiş riyazi/məntiqi funksiyalarla relyasion modelin qurulması |
+| **Checkpoint 3** | Müştəri, Satış və Region profilləri üzrə `Pivot Table` hesabatlarının çıxarılması |
+| **Checkpoint 4** | KPI (Əsas Effektivlik Göstəriciləri) kartlarının dizayn edilməsi və vizual iyerarxiya |
+| **Checkpoint 5** | Dinamik Filtrlərlə (Slicers) təchiz olunmuş interaktiv Satış Dashboard-unun tamamlanması |
+
+---
+
+## 🗃️ Resurslar və Alətlər
+
+* **Verilənlər Bazası Faylı:** [`northwind_database.db`](Week_1_SQL_Basics_to_Advanced/northwind.db)
+* **İstifadə Olunan Texnologiyalar:** SQL (SQLite), Microsoft Excel / Google Sheets
+* **Proqram təminatı:** DB Browser for SQLite, MS Excel
 
 ---
 
