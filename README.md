@@ -344,8 +344,8 @@ Bu həftənin məqsədi bazadan çıxarılan xam verilənlərin Excel mühitind�
 ### 📌 Əhatə Olunan Excel Mövzuları
 | # | Mövzu | Təsvir |
 | :--- | :--- | :--- |
-| **1** | **Data Cleaning** | Unikal dəyərlərin tapılması, boşluqların (`null`) və təkrarlanan sətirlərin təmizlənməsi |
-| **2** | **Logical Formulas** | `IF`, `AND`, `OR`, `IFS` funksiyaları ilə şərti sütunların və kateqoriyaların yaradılması |
+| **1** | **Cədvəl daxilində data təmizləmə** | Unikal dəyərlərin tapılması, boşluqların (`null`) və təkrarlanan sətirlərin təmizlənməsi |
+| **2** | **** | `IF`, `AND`, `OR`, `IFS` funksiyaları ilə şərti sütunların və kateqoriyaların yaradılması |
 | **3** | **Lookup Functions** | `XLOOKUP`, `VLOOKUP`, `INDEX` & `MATCH` vasitəsilə fərqli vərəqlərdən dataların çəkilməsi |
 | **4** | **Aggregation** | `SUMIFS`, `COUNTIFS`, `AVERAGEIFS` funksiyaları ilə şərtə bağlı dinamik hesablamalar |
 | **5** | **Pivot Tables** | Böyük verilənlər çoxluğunun sürətli şəkildə qruplaşdırılması və çarpaz analizlər |
@@ -360,6 +360,7 @@ Bu həftənin məqsədi bazadan çıxarılan xam verilənlərin Excel mühitind�
 | **Checkpoint 3** | Müştəri, Satış və Region profilləri üzrə `Pivot Table` hesabatlarının çıxarılması |
 | **Checkpoint 4** | KPI (Əsas Effektivlik Göstəriciləri) kartlarının dizayn edilməsi və vizual iyerarxiya |
 | **Checkpoint 5** | Dinamik Filtrlərlə (Slicers) təchiz olunmuş interaktiv Satış Dashboard-unun tamamlanması |
+| **Checkpoint 6** | İstifadə olunan formulaların qısa sənədləşdirilməsi |
 
 ---
 
