@@ -1,1 +1,152 @@
+Checkpoint-1 -- Cədvəl daxilində data təmizləmə (dublikat, uyğunsuz format, boşluqlar)
+
+1)Təkrarlanan sətirlərin silinməsi: Datada eyni müştəriyə və eyni sifarişə aid alt-alta düşən lazımsız dublikat sətirlər təmizləndi. 
+2)Boş sətirlərin silinməsi: Cədvəlin ortasında qalan və gələcəkdə hesablamaları korlaya biləcək tamamilə boş sətirlər datadan təmizləndi. 
+3)Sıra nömrələrinin düzəldilməsi: Sistem xətası ucbatından fərqli sifarişlərə eyni sıra nömrəsi verilmişdi. 
+Bu qarışıqlıq aradan qaldırıldı və ardıcıllıq bərpa olundu.
+4)Boşluqların vizual tapılması: Cədvəldə gizlənən boş sətirləri tapmaq üçün datanın şriftini (fontunu) dəyişmək kimi xüsusi analitik metoddun istifadə olundu. 
+5)Tarixlərin yoxlanılması: Sifariş və çatdırılma tarixlərinin formatı yoxlanıldı, hər şeyin düzgün işlədiyi təsdiqləndi. 
+6)Rəqəmlərin standart formata salınması: Satış sayları tam rəqəmə çevrildi, 
+pul göstəricilərindəki qarışıq kəsr rəqəmləri vergüldən sonra 2 rəqəm olacaq şəkildə eyniləşdirildi. 
+7)Mənfi qazancların saxlanılması: Profit sütunundakı mənfi rəqəmlərin xəta olmadığı, 
+müştərilərə edilən yüksək endirimlərə görə şirkətin etdiyi real ziyan olduğu tapıldı və saxlanıldı.
+
+
+Checkpoint-2 -- Konkret biznes suallarına cavab verən pivot table
+
+1. Məhsul Portfeli Biznes sualı: Hansı məhsul zərər edir? 
+Fakt: Furniture cəmi 19,706.64$ mənfəət verir, çünki Tables (-17,753.21$) və Bookcases (-3,632.07$) qazancı aşağı salır. 
+Technology isə təkbaşına 146,566.82$ ilə ən çox qazandırandır.
+Qərar: Masaların (Tables) satışını azaldın/qiymətini qaldırın, resursları Copiers (56,093.94$) və Phones (45,074.27$) satışına yönəldin. 
+
+2. Region və Şəhər Riskləri Biznes sualı: Harada boşuna güc itiririk? 
+Fakt: Filtrlənmiş zərərli şəhərlər ümumilikdə 390,453.99$ satış etsə də, şirkətə -75,330.21$ xalis zərər vurur. 
+Ən böyük zərbəni Philadelphia (-13,837.77$) və Houston (-10,153.55$) vurur. 
+Qərar: Bu şəhərlərdə logistika xərclərini təftiş edin və problem həll olunana qədər buradakı aqressiv satışı dayandırın. 
+
+3. Endirim Strategiyası Biznes sualı: Hansı endirim faizi bizi müflis edir? 
+Fakt: 0% (326,707.09$), 10% (9,099.97$) və 20% (91,079.95$) endirimlər qazandırır. 
+Lakin endirim 30%-ə çatanda -10,501.39$, 40%-ə çatanda isə -23,086.37$ birbaşa zərər yazır. 
+Qərar: Şirkətdə maksimum endirim limitini 20% olaraq bloklayın. 30%-dən yuxarı endirim etmək qadağan edilməlidir. 
+
+4. Müştəri Riskləri Biznes sualı: Ən zərərli top müştərilərimiz kimlərdir? 
+Fakt: Filtr olunmuş riskli müştərilər şirkətə ümumilikdə -30,265.47$ xalis zərər vurur. 
+Ən böyük zərbəni Cindy Stewart (-6,626.39$) və Grant Thornton (-4,108.66$) vurub. 
+Qərar: Bu müştərilərə satılan məhsulların qiymət marjasına baxın və növbəti sifarişlərdə onlara edilən endirimləri tamamilə kəsin. 
+
+5. İllər üzrə Ümumi Satış və Mənfəət Biznes sualı: Biz ildən-ilə həqiqətən böyüyürük? 
+Fakt: Bəli, biznes stabil böyüyür. Satışlar 2023-cü ildəki 493,659.72$-dan 2026-cı ildə 745,567.53$-a yüksəlib. 
+Eyni zamanda təmiz mənfəət də 51,660.94$-dan 95,926.35$-a qalxıb. 
+Qərar: Böyümə tempi əladır, mövcud qlobal satış və qiymət strategiyasını qoruyub saxlayın. 
+
+6. Sifariş Sayında Mövsümlülük Biznes sualı: İlin hansı aylarında logistika və əməliyyat yükümüz pik həddə çatır? 
+Fakt: Sifarişlərin sayı ilin sonuna doğru kəskin artır. Ən yüksək sifariş yükü Noyabr (1,473 sifariş) və Dekabr (1,470 sifariş) aylarındadır. 
+Ən sakit ay isə Fevraldır (300 sifariş). 
+Qərar: Payızın sonuna yaxın logistika komandasının işçi qüvvəsini artırın, Fevral ayında isə iş yükünü və əməliyyat xərclərini minimuma endirin. 
+
+7. Aylıq Mənfəət Trendi Biznes sualı: Hansı aylarda mənfəət zəifləyir və ya zərər edirik? 
+Fakt: İlin ən gəlirli dövrü Dekabr (44,229.85$ mənfəət) ayıdır. Lakin Yanvar və Aprel aylarında ciddi dalğalanmalar var 
+(məsələn, 2024-cü ilin Yanvarında -3,189.80$ zərər qeydə alınıb). 
+Qərar: Yanvar ayındakı bu zərər riskinə qarşı ilin sonunda (Dekabrda) əldə olunan yüksək mənfəətdən nağd pul ehtiyatı (maliyyə yastığı) ayırın.
+
+
+
+
+
+
+
+Checkpoint-3 -- Lookup formulaları (VLOOKUP/XLOOKUP və ya INDEX-MATCH) ikinci vərəqdən data birləşdirərək
+
+Orders əsas cədvəlinə digər vərəqlərdən məlumatlar inteqrasiya edilmişdir. Sifariş kodları əsas 
+götürülərək hansı malların geri qaytarıldığı (Returned) təyin olunub. Eyni zamanda, hər bir 
+sətirdəki məhsul koduna əsasən həmin malın tədarükçüsü (Supplier) və məhsulun maya dəyəri 
+(Unit Cost) tapılaraq hesablama cədvəlinə uğurla əlavə edilib.
+
+Returned tapşırığı üçün: =XLOOKUP(@B:B,Returns!A:A,Returns!B:B,"No") düsturu istifadə edilib. 
+Bu düstur ana cədvəldəki sifariş kodunu götürür, Returns vərəqində axtarır və qarşılığını tapır. 
+Kod siyahıda yoxdursa, xəta verməməsi üçün "No" yazır.
+
+Supplier tapşırığı üçün: =XLOOKUP(@P:P,Products!A:A,Products!C:C,"Bilinmir") düsturu tətbiq olunub. 
+Məhsul koduna əsasən Products vərəqindən müvafiq tədarükçü şirkətin adını tapıb cədvələ köçürür.
+
+Unit Cost tapşırığı üçün: =INDEX(Products!D:D, MATCH(Orders!P2, Products!A:A, 0)) kombinasiyasından 
+istifadə edilib. Burada MATCH funksiyası P2 xanasındakı məhsul kodunun digər vərəqdə neçənci sətirdə 
+olduğunu tapır, INDEX isə həmin sətir nömrəsinə uyğun olaraq D sütunundan dəqiq maya dəyəri rəqəmini götürür.
+
+
+
+Checkpoint-4 -- Hesablanan sahələr (SUMIFS, COUNTIFS, IF/nested IF/IFS)
+
+Data analizi və hesabatlılıq mərhələsində verilənlər bazasındakı şərtləri qruplaşdırmaq və 
+əməliyyatları kateqoriyalara ayırmaq məqsədilə ana cədvəldə iki yeni sütun yaradılmışdır. 
+SUMIFS funksiyasından istifadə edilərək "Region_Total_Sales" adlı sütun yaradılmış və hər 
+bir satış sətrinə uyğun olaraq aid olduğu regionun ümumi satış həcmi dinamik şəkildə hesablanmışdır. 
+Həmçinin, biznesin rentabelliyini analiz etmək üçün məntiqli şərt funksiyası (IF) tətbiq olunmuş, 
+"Status" adlı yeni sütun vasitəsilə hər bir tranzaksiyanın şirkətə gətirdiyi mənfəət və ya zərər vəziyyəti avtomatik olaraq qruplaşdırılmışdır.
+
+Region_Total_Sales sütunu üçün: =SUMIFS(T:T, O:O, O2) düsturu tətbiq edilmişdir. 
+Bu funksiya Region (O) sütununu yoxlayır, cari sətirdəki regiona (O2) uyğun gələn bütün satışları 
+T (Sales) sütunundan taparaq cəmləyir. Beləliklə, hər bir bölgənin ümumi satış gücü təyin olunub.
+
+Status sütunu üçün: =IF(W2 < 0, "Zərər", "Gəlir") düsturu istifadə olunmuşdur. 
+Burada W2 xanasındakı mənfəət (Profit) dəyəri yoxlanılır; əgər rəqəm sıfırdan kiçikdirsə xanaya avtomatik olaraq "Zərər", əks halda isə "Gəlir" statusu yazılır.
+
+
+Checkpoint-5 -- 3+ qrafik tipi olan dashboard + şərti formatlaşdırma
+
+https://drive.google.com/file/d/1m7whVv_Xh9NSCcVdZVEtXQx8HVfkfhtz/view?usp=sharing
+
+Datanın vizual analizi, hədəflərin izlənməsi və əsas göstəricilərin (KPI) effektiv qiymətləndirilməsi üçün 3 fərqli qrafik tipindən ibarət dinamik dashboard hazırlanmış və şərti formatlaşdırma qaydaları tətbiq olunmuşdur:
+
+Tətbiq olunmuş qrafik tipləri:
+
+Regionlar üzrə ümumi satış payını və bazar bölgüsünü görmək üçün Pie Chart,
+
+Kateqoriyalar üzrə mənfəət müqayisəsini vizuallaşdırmaq üçün Column Chart,
+
+Tranzaksiyaların gəlir/zərər statuslarının say bölgüsünü və həcmini izləmək üçün Bar Chart yaradılmışdır.
+
+Şərti Formatlaşdırma (Conditional Formatting): 
+Biznes hədəflərinin yerinə yetirilmə vəziyyətini vizual olaraq anında fərqləndirmək üçün şərti formatlaşdırma qaydası qurulmuşdur. 
+Pivot cədvəldə təyin olunmuş biznes hədəflərinin üstündə olan, şirkətə yüksək xalis mənfəət qazandıran kateqoriyalar 
+(məsələn, Office Supplies) xüsusi yaşıl rəng indikatoru ilə vurğulanmışdır. 
+Bu da hesabatın oxunurluğunu və vizual təsirini maksimum dərəcədə artırır.
+
+
+Checkpoint-6 -- İstifadə olunan formulaların qısa sənədləşdirilməsi
+
+1) Checkpoint 2
+1. Məhsul: Rows: Category -> Sub-Category | Values: Sum of Profit
+2. Region: Rows: Region -> City | Values: Sum of Sales, Sum of Profit | Filter: Profit < 0
+3. Endirim: Rows: Discount | Values: Sum of Profit
+4. Müştəri: Rows: Customer Name | Values: Sum of Profit | Sort: Profit (Ascending)
+5. İllik Trend: Rows: Order Date (Years) | Values: Sum of Sales, Sum of Profit
+6. Mövsümlülük: Rows: Order Date (Months) | Values: Count of Order ID
+7. Aylıq Trend: Rows: Order Date (Months) | Columns: Order Date (Years) | Values: Sum of Profit
+
+2) Checkpoint 3 daxilində tətbiq olunmuş məlumat inteqrasiyası formulları ==
+1. Sifariş koduna əsasən geri qaytarılma vəziyyətinin təyini (Returned sütunu):
+=XLOOKUP(@B:B,Returns!A:A,Returns!B:B,"No")
+
+2. Məhsul koduna əsasən tədarükçünün tapılması (Supplier sütunu):
+=XLOOKUP(@P:P,Products!A:A,Products!C:C,"Bilinmir")
+
+3. Sətir üzrə məhsulun maya dəyərinin gətirilməsi (Unit Cost sütunu):
+=INDEX(Products!D:D, MATCH(Orders!P2, Products!A:A, 0))
+
+Checkpoint 4 daxilində tətbiq olunmuş analitik formullar ==
+4. Region üzrə ümumi satış payının hesablanması (Region_Total_Sales sütunu):
+=SUMIFS(T:T, O:O, O2)
+5. Mənfəət göstəricisinə əsasən əməliyyatın rentabelliyinin təyini (Status sütunu):
+=IF(W2 < 0, "Zərər", "Gəlir")
+
+3)Checkpoint 5
+1. Regionlar üzrə Satış Payı (Pie Chart):
+Cədvəl quruluşu: Rows: Region | Values: Sum of Ümumi Satış
+2. Kateqoriyalar üzrə Mənfəət (Column Chart):
+Cədvəl quruluşu: Rows: Kateqoriya | Values: Sum of Ümumi Mənfəət
+3. Statusun Sayı (Bar Chart):
+Cədvəl quruluşu: Rows: Status | Values: Count of Statusun Sayı
+
+* Dashboard Vizualı: Bütün Pivot qrafiklərin sahə düymələri (Field Buttons) gizlədilərək təmizlənmiş və linki əlavə olunan Google Drive qovluğuna yerləşdirilmişdir.
 
