@@ -1,61 +1,7 @@
 # 📊 DevJoint Data Analytics Internship Program
 
 Bu repozitoriya, **DevJoint** tərəfindən təşkil olunmuş 4 həftəlik Data Analitika təcrübə proqramı çərçivəsində hazırladığım bütün tapşırıqları, SQL sorğularını, data analizlərini və hesabatlarımı özündə birləşdirir.
-
---------
-
-# 📊 SQL Practice — Northwind Case Study
-
-Bu repozitoriya **Northwind** verilənlər bazası üzərində hazırlanmış SQL praktiki tapşırıqlarını və sorğularını əhatə edir. Layihənin əsas məqsədi sadə `SELECT` sorğularından başlayaraq mürəkkəb analitik funksiyalara və performans optimallaşdırılmasına qədər SQL bacarıqlarını mərhələli şəkildə nümayiş etdirməkdir.
-
 ---
-
-## 📌 Əhatə Olunan Mövzular
-
-| # | Mövzu | Təsvir |
-| :--- | :--- | :--- |
-| **1** | **SELECT** | Verilənlərin seçilməsi və sütunların göstərilməsi |
-| **2** | **WHERE** | Şərtlərə əsasən datanın filtrlənməsi |
-| **3** | **ORDER BY** | Nəticələrin artan və ya azalan sıra ilə düzülməsi |
-| **4** | **GROUP BY** | Datanın müəyyən sütunlar üzrə qruplaşdırılması |
-| **5** | **HAVING** | Qruplaşdırılmış nəticələr üzərində şərtlərin tətbiqi |
-| **6** | **INNER JOIN** | Cədvəllərin kəsişən (uyğun) sətirlər üzrə birləşdirilməsi |
-| **7** | **LEFT JOIN** | Sol cədvəlin hamısı + sağ cədvəlin uyğun sətirlərinin birləşdirilməsi |
-| **8** | **Subquery** | Sorğu daxilində daxili sorğuların (adi və correlated) qurulması |
-| **9** | **CTE (WITH)** | Ümumi cədvəl ifadələri ilə oxunaqlı və modulyar sorğu arxitekturası |
-| **10**| **Window Functions**| `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()` və Kumulyativ Cəm (`Running Total`) |
-| **11**| **Query Optimization**| Sorğuların icra sürətini və performansını artırmaq üçün üsullar |
-| **12**| **Index** | Böyük verilənlərdə axtarışı sürətləndirmək üçün indekslərin yaradılması |
-
----
-
-## 🗂️ Layihənin Strukturu və Checkpoint-lər
-
-Repository-də ümumilikdə **6 Checkpoint** yer alır. Hər bir checkpoint müəyyən SQL mövzularını əhatə edir. Tapşırıqların ətraflı həlləri və hər bir sorğunun altındakı qısa izahatlar birbaşa `.sql` faylında sənədləşdirilmişdir.
-
-| Checkpoint | Əhatə Etdiyi Texniki Mövzular |
-| :--- | :--- |
-| **Checkpoint 1** | `SELECT`, `WHERE`, `ORDER BY`, `LIMIT` / `TOP` |
-| **Checkpoint 2** | `INNER JOIN`, `LEFT JOIN`, Çox cədvəlli relyasion sorğular |
-| **Checkpoint 3** | `Subquery`, `CTE (WITH)`, `GROUP BY`, `HAVING` |
-| **Checkpoint 4** | Window Functions — `ROW_NUMBER()`, `PARTITION BY`, `RANK()`, `DENSE_RANK()` |
-| **Checkpoint 5** | `Running Total` (Kumulyativ cəm), mürəkkəb analitik CTE ssenariləri |
-| **Checkpoint 6** | İndeks (`INDEX`) yaratma, Correlated Subquery və performans optimallaşdırılması |
-
----
-
-## 🗃️ Resurslar və Alətlər
-
-* **Verilənlər Bazası:** `Northwind Database` — Müştərilər, sifarişlər, məhsullar, işçilər və logistika məlumatlarını ehtiva edən klassik relyasion verilənlər bazası nümunəsi.
-* **Texnologiyalar:** SQL (SQLite dialekti)
-* **İstifadə Olunan Proqram:** DB Browser for SQLite
-
-```text
-📦 SQL-Practice
- ┣ 📜 SQL_Checkpoints.sql   <-- Bütün SQL sorğuları, suallar və şərhlər buradadır
- ┗ 📜 README.md             <-- Layihə bələdçisi
-
---------
 
 ### 🗄️ İstifadə Olunan Verilənlər Bazası (Database)
 Bu layihədəki sorğular GitHub-a əlavə edilmiş **Northwind** verilənlər bazası üzərində qurulmuşdur: 
