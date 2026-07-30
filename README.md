@@ -279,3 +279,72 @@ GROUP BY o.OrderID, o.CustomerID;
 CREATE INDEX idx_orders_ship_country_city 
 ON Orders (ShipCountry, ShipCity);
 ```
+
+# DevJoint Təcrübə Proqramı — Satış və Mənfəət Analizi Portfel Layihəsi
+
+Bu layihədə şirkətin satış, mənfəət, müştəri və region məlumatları analiz edilmiş, Python və Excel vasitəsilə məlumatların təmizlənməsi (Data Cleaning), inteqrasiyası, biznes suallarının cavablandırılması və interaktiv hesabatlığın (Dashboard) qurulması mərhələləri icra olunmuşdur.
+
+---
+
+## Checkpoint 1: Məlumatların Təmizlənməsi (Data Cleaning)
+
+Cədvəl daxilində hesablamaların düzgünlüyünü təmin etmək üçün aşağıdakı təmizləmə və standartlaşdırma addımları yerinə yetirilmişdir:
+
+1. **Təkrarlanan sətirlərin silinməsi:** Eyni müştəriyə və sifarişə aid alt-alta düşən dublikat sətirlər datadan kənarlaşdırılmışdır.
+2. **Boş sətirlərin silinməsi:** Cədvəlin ortasında qalan və gələcəkdə statistik göstəriciləri korlaya biləcək tamamilə boş sətirlər təmizlənmişdir.
+3. **Sıra nömrələrinin düzəldilməsi:** Sistem xətası ucbatından fərqli sifarişlərə verilmiş eyni sıra nömrələri düzəldilmiş və ardıcıllıq bərpa olunmuşdur.
+4. **Boşluqların vizual tapılması:** Cədvəldə gizlənən boş hüceyrələri vizual aşkar etmək üçün analitik məqsədlə şrift (font) dəyişdirmə metodundan istifadə edilmişdir.
+5. **Tarixlərin yoxlanılması:** Sifariş və çatdırılma tarixlərinin formatı yoxlanılmış, xronoloji uyğunluq təsdiqlənmişdir.
+6. **Rəqəmlərin standart formata salınması:** Satış sayları tam rəqəmə çevrilmiş, pul göstəricilərindəki kəsrlər vergüldən sonra 2 rəqəm olacaq şəkildə eyniləşdirilmişdir.
+7. **Mənfi qazancların saxlanılması:** Profit (Mənfəət) sütunundakı mənfi rəqəmlərin xəta olmadığı, müştərilərə edilən yüksək endirimlərə görə şirkətin etdiyi real ziyan olduğu təsdiqlənərək datada saxlanılmışdır.
+
+---
+
+## Checkpoint 2: Biznes Sualları və Pivot Table Analizi
+
+Biznesin mövcud vəziyyətini qiymətləndirmək üçün 7 kritik suala cavab axtarılmış və müvafiq strateji qərarlar hazırlanmışdır:
+
+### 1. Məhsul Portfeli Analizi
+* **Biznes sualı:** Hansı məhsul kateqoriyası və ya alt kateqoriyası zərər edir?
+* **Fakt:** Furniture (Mebel) kateqoriyası cəmi 19,706.64$ mənfəət verir. Buna səbəb Tables (-17,753.21$) və Bookcases (-3,632.07$) alt kateqoriyalarının zərərlə işləməsidir. Technology kateqoriyası isə 146,566.82$ ilə ən çox qazandırandır.
+* **Qərar:** Masaların (Tables) satış həcmi azaldılmalı və ya qiyməti qaldırılmalıdır. Resurslar daha yüksək gəlirli Copiers (56,093.94$) və Phones (45,074.27$) satışına yönəldilməlidir.
+
+### 2. Region və Şəhər Riskləri
+* **Biznes sualı:** Coğrafi olaraq hansı şəhərlərdə resurs itkisinə yol verilir?
+* **Fakt:** Zərərli şəhərlər ümumilikdə 390,453.99$ satış etsə də, şirkətə -75,330.21$ xalis zərər vurur. Ən böyük maliyyə zərbəsini Philadelphia (-13,837.77$) və Houston (-10,153.55$) şəhərləri vurur.
+* **Qərar:** Bu şəhərlərdə logistika və paylama xərcləri təftiş edilməli, rentabellilik problemi həll olunana qədər aqressiv marketinq və satış dayandırılmalıdır.
+
+### 3. Endirim Strategiyasının Qiymətləndirilməsi
+* **Biznes sualı:** Hansı endirim faizləri şirkəti zərərə uğradır?
+* **Fakt:** 0% (326,707.09$), 10% (9,099.97$) və 20\% (91,079.95$) endirim dərəcələri mənfəət gətirir. Lakin endirim 30%-ə çatdıqda -10,501.39$, 40\%-ə çatdıqda ise -23,086.37$ birbaşa zərər yaranır.
+* **Qərar:** Şirkət üzrə maksimum endirim limiti 20% olaraq bloklanmalıdır. 30%-dən yuxarı endirim tətbiqinə qadağa qoyulmalıdır.
+
+### 4. Müştəri Riskləri
+* **Biznes sualı:** Ən yüksək zərər vuran top müştərilərimiz kimlərdir?
+* **Fakt:** Filtr olunmuş riskli müştəri qrupu şirkətə ümumilikdə -30,265.47$ xalis zərər vurur. Ən yüksək mənfi marja Cindy Stewart (-6,626.39$) və Grant Thornton (-4,108.66$) tərəfindən formalaşdırılıb.
+* **Qərar:** Bu müştərilərə satılan məhsulların qiymət marjasına yenidən baxılmalı və növbəti sifarişlərdə onlara edilən xüsusi endirimlər tamamilə ləğv edilməlidir.
+
+### 5. İllər üzrə İnkişaf Dinamikası
+* **Biznes sualı:** Biznes ildən-ilə stabil böyümə nümayiş etdirirmi?
+* **Fakt:** Bəli, biznes stabil böyüyür. Ümumi satışlar 2023-cü ildəki 493,659.72$-dan 2026-cı ildə 745,567.53$-a yüksəlmişdir. Eyni zamanda xalis mənfəət də 51,660.94$-dan 95,926.35$-a qalxmışdır.
+* **Qərar:** Böyümə tempi müsbətdir, mövcud qlobal satış və qiymət strategiyası qorunub saxlanılmalıdır.
+
+### 6. Sifariş Sayında Mövsümlülük (Seasonality)
+* **Biznes sualı:** İlin hansı aylarında logistika və əməliyyat yükü pik həddə çatır?
+* **Fakt:** Sifarişlərin sayı ilin son rübünə doğru kəskin artır. Ən yüksək sifariş yükü Noyabr (1,473 sifariş) və Dekabr (1,470 sifariş) aylarındadır. Ən sakit ay isə Fevraldır (300 sifariş).
+* **Qərar:** Payızın son aylarında logistika və anbar komandasının işçi qüvvəsi (outsourcing vasitəsilə) artırılmalı, Fevral ayında isə əməliyyat xərcləri minimuma endirilməlidir.
+
+### 7. Aylıq Mənfəət Trendi
+* **Biznes sualı:** Hansı dövrlərdə mənfəət zəifləyir və ya xalis zərər qeydə alınır?
+* **Fakt:** İlin ən gəlirli dövrü Dekabr (44,229.85$ mənfəət) ayıdır. Lakin Yanvar və Aprel aylarında ciddi dalğalanmalar var (məsələn, 2024-cü ilin Yanvarında -3,189.80$ zərər qeydə alınıb).
+* **Qərar:** Yanvar ayındakı zərər riskini kompensasiya etmək üçün Dekabr ayında əldə olunan yüksək mənfəətdən nağd pul ehtiyatı (maliyyə yastığı) ayrılmalıdır.
+
+---
+
+## Checkpoint 3: Məlumatların İnteqrasiyası və Lookup Formulaları
+
+`Orders` (Sifarişlər) əsas cədvəlinə digər vərəqlərdən relyasion məlumatlar inteqrasiya edilmişdir. Sifariş kodları əsas götürülərək hansı malların geri qaytarıldığı (Returned) təyin olunmuş, həmçinin tədarükçü (Supplier) və maya dəyəri (Unit Cost) məlumatları cədvələ əlavə edilmişdir.
+
+* **Geri qaytarılma statusu (Returned) üçün:**
+  ```excel
+  =XLOOKUP(@B:B,Returns!A:A,Returns!B:B,"No")
