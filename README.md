@@ -448,4 +448,4 @@ Məhsul Portfeli: Satırlar: Category -> Sub-Category | Dəyərlər: Sum of Prof
 
 * **Qeyd:** Dashboard vizualının daha peşəkar görünməsi üçün bütün Pivot qrafiklərinin sahə düymələri (Field Buttons) gizlədilmişdir.
 
-🔗 Dashboard Faylına baxış: Google Drive Linki
+🔗 Dashboard Faylına baxış: Google Drive Linki: image/excelDashboard.png
