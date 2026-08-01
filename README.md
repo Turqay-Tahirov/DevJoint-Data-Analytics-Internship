@@ -82,7 +82,9 @@ Bu həftə Excel mühitində böyük satış datası üzərində məlumatların 
 * **Mənfəət Müqayisəsi:** Kateqoriyalar üzrə qazancları vizuallaşdıran `Column Chart`.
 * **Tranzaksiya Həcmi:** Gəlir/Zərər statuslarının say bölgüsünü izləyən `Bar Chart`.
 * **Şərti Formatlaşdırma:** Biznes hədəflərini keçən və yüksək xalis mənfəət qazandıran kateqoriyaları (*Office Supplies*) anında fərqləndirən **yaşıl rəng indikatoru** tətbiq edildi.
-📁 **Dashboard faylının vizualı üçün baxın:** `image/excelDashboard.png`
+* 
+📸 **Dashboard faylının vizualı:**
+[![Excel Dashboard](image/excelDashboard.png)](image/excelDashboard.png)
 
 ✍️ **Müəllif:** Turqay Tahirov  
 *Bu layihə DevJoint Təcrübə Proqramı çərçivəsində, real data üzərində analitik və biznes hesabatlığı bacarıqlarını nümayiş etdirmək üçün hazırlanmışdır.*
