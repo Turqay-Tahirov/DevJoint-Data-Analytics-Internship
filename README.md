@@ -54,6 +54,7 @@ Bu həftə Excel mühitində böyük satış datası üzərində məlumatların 
 
 ### 🛠️ Data Təmizlənməsi və Hazırlıq (Data Cleaning)
 * **Dublikat və Boşluqlar:** `Remove Duplicates` və `Go To Special (Blanks)` əmrləri ilə lazımsız sətirlər və gizli boşluqlar saniyələr içində tamamilə təmizləndi.
+*  **ID Sürüşməsinin və Ardıcıllığın Bərpası:** Sistem xətası ucbatından tamamilə fərqli məlumatları əks etdirən sətirlərə eyni ID-lərin təyin olunduğu (ID sürüşməsi) aşkarlandı. Bu xətanı aradan qaldırmaq üçün təkrarlanmanın başladığı sətirdən etibarən unikal ID ardıcıllığı `auto-fill` vasitəsilə yenidən nömrələnərək bərpa edildi.
 * **Formatlaşdırma:** `Short Date` formatı ilə tarixlər, `Decrease Decimal` düyməsi ilə pul göstəriciləri (vergüldən sonra 2 rəqəm) standart formata salındı.
 * **Mənfi Dəyərlər:** `Profit` sütunundakı mənfi rəqəmlərin sistem xətası deyil, 70-80%-lik endirimlərdən yaranan real ziyan olduğu analitik olaraq sübut edildi və datada saxlanıldı.
 
