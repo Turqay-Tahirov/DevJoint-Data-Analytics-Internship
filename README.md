@@ -46,47 +46,41 @@ Bu həftə **Northwind** verilənlər bazası üzərində real biznes ssenarilə
 * **Biznes Düşüncəsi:** Real idarəetmə suallarını effektiv SQL sorğularına çevirməyi mənimsədim.
 * **Performans:** Böyük verilənlərdə sorğuların saniyələr daxilində işləməsi üçün kodun optimallaşdırılmasını və indeksləmə məntiqini praktiki təcrübə etdim.
 
-# 📊 Sales & Profit Analytics Dashboard (Excel)
+### 🔑 Week 2: Excel / Google Sheets Analizi (İcmal)
 
-Bu repository, **Northwind** verilənlər bazasından çıxarılan xam satış verilənlərinin Excel mühitində təmizlənməsi, qabaqcıl verilən inteqrasiyası funksiyaları ilə relyasion modelin qurulması və rəhbərlik üçün interaktiv hesabat panelinin (**Dashboard**) hazırlanması prosesini əhatə edir.
-
-> 🛠️ **Texnologiyalar:** MS Excel  
-> 📁 **Resurslar:** `northwind_database.db` | `excelDashboard.png` (Dashboard Vizualı)
+Bu həftə Excel mühitində böyük satış datası üzərində məlumatların təmizlənməsi, funksiyalarla zənginləşdirilməsi, biznes keys analizi və vizual hesabat panelinin (Dashboard) qurulması prosesi tam icra edilmişdir.
 
 ---
 
-### 🗺️ Layihənin Yol Xəritəsi (Mövzular və Checkpoint-lər)
-
-Məlumatların idarə edilməsi və analitik hesabatlıq mərhələlərini bir baxışda anlamaq üçün icmal cədvəli:
-
-| Checkpoint | Excel Mövzuları / Funksiyaları | Biznes Ssenarisi və Analitik Tapşırıq |
-| :--- | :--- | :--- |
-| **📌 CP 1** | `LEFT`, `RIGHT`, `MID`, Data Cleaning | Dublikat/boş sətirlərin silinməsi, rəqəm və tarix formatlarının standartlaşdırılması |
-| **📌 CP 2** | `Pivot Tables`, `Data Visualization` | Məhsul, region, endirim strategiyası, müştəri riskləri və mövsümlülük üzrə 7 kritik biznes sualının təhlili |
-| **📌 CP 3** | `XLOOKUP`, `INDEX & MATCH` | `Returns` və `Products` vərəqlərindən geri qaytarılma, tədarükçü və maya dəyəri məlumatlarının əsas cədvələ inteqrasiyası |
-| **📌 CP 4** | `SUMIFS`, `IF`, `AND`, `OR` | Region üzrə ümumi satış gücünün və mənfəətə görə "Gəlir/Zərər" statusunun dinamik hesablanması |
-| **📌 CP 5** | `Pie, Column & Bar Charts`, `Slicers` | Region satışı, kateqoriya mənfəəti və tranzaksiya statuslarını göstərən interaktiv idarəetmə panelinin qurulması |
-| **📌 CP 6** | Formula Sənədləşdirilməsi | Tətbiq olunan makro-funksiyaların, pivot arxitekturalarının və KPI kartlarının strukturlaşdırılması |
+### 🛠️ Data Təmizlənməsi və Hazırlıq (Data Cleaning)
+* **Dublikat və Boşluqlar:** `Remove Duplicates` və `Go To Special (Blanks)` əmrləri ilə lazımsız sətirlər və gizli boşluqlar saniyələr içində tamamilə təmizləndi.
+* **Formatlaşdırma:** `Short Date` formatı ilə tarixlər, `Decrease Decimal` düyməsi ilə pul göstəriciləri (vergüldən sonra 2 rəqəm) standart formata salındı.
+* **Mənfi Dəyərlər:** `Profit` sütunundakı mənfi rəqəmlərin sistem xətası deyil, 70-80%-lik endirimlərdən yaranan real ziyan olduğu analitik olaraq sübut edildi və datada saxlanıldı.
 
 ---
 
-### 📊 Biznes İnsaydları və Strateji Qərarlar (Executive Summary)
-
-Pivot Table analizi nəticəsində şirkətin rentabelliyini artırmaq üçün növbəti addımlar müəyyən edilmişdir:
-
-*   **Məhsul Portfeli:** *Tables* (-17,753.21$) və *Bookcases* (-3,632.07$) alt kateqoriyalarının ciddi zərər etdiyi, *Technology* kateqoriyasının isə ən böyük gəlir mənbəyi olduğu tapılmışdır. (Qərar: Zərərli sahələrdə qiymət artımı edilməli, resurslar *Copiers* və *Phones* satışına yönəldilməlidir).
-*   **Region və Müştəri Riskləri:** *Philadelphia* və *Houston* şəhərlərinin, eləcə də müəyyən riskli müştəri qruplarının şirkətə ciddi xalis zərər vurduğu aşkar edilmişdir. (Qərar: Logistika xərcləri təftiş edilməli, bu subyektlərə tətbiq olunan xüsusi endirimlər ləğv olunmalıdır).
-*   **Endirim Strategiyası:** 20%-ə qədər olan endirimlərin gəlirli olduğu, lakin 30% və üzəri endirimlərin birbaşa zərər yaratdığı sübut edilmişdir. (Qərar: Şirkət üzrə maksimum endirim limiti 20% olaraq bloklanmalıdır).
-*   **Mövsümlülük (Seasonality):** Sifariş yükünün Noyabr və Dekabr aylarında pik həddə çatdığı, Fevralda isə minimuma endiyi tapılmışdır. (Qərar: Payızın son rübündə anbar işçi qüvvəsi artırılmalı, Yanvar ayı üçün Dekabr gəlirlərindən maliyyə yastığı ayrılmalıdır).
+### 🧩 Düsturlar və Data İnteqrasiyası (Advanced Formulas)
+* **Çarpaz Axtarış (`XLOOKUP`):** Sifariş koduna əsasən geri qaytarılan mallar (`Returns`) və məhsul koduna görə tədarükçü (`Supplier`) məlumatları fərqli vərəqlərdən ana cədvələ inteqrasiya olundu.
+* **Dəqiq Maya Dəyəri (`INDEX & MATCH`):** Məhsul kodunun yerinə görə cədvəldən nöqtə atışı ilə dəqiq maya dəyəri (`Unit Cost`) tapılaraq əlavə edildi.
+* **Şərtli Hesablama (`SUMIFS`):** Hər bir satış sətrinə aid olduğu regionun ümumi satış həcmini dinamik toplayan `Region_Total_Sales` sütunu yaradıldı.
+* **Məntiqi Funksiya (`IF`):** Mənfəət dəyərinə əsasən hər bir tranzaksiyaya avtomatik "Gəlir" və ya "Zərər" statusu təyin edildi.
 
 ---
 
-### 🎯 Qazanılan Bacarıqlar
+### 🔍 Cavab Tapılan Biznes Sualları və Qərarlar
+* **Məhsul Portfeli:** *Tables* və *Bookcases* kateqoriyalarının ciddi zərər etdiyi, *Technology* sahəsinin isə ən çox qazandıran olduğu tapıldı. (Qərar: Masaların satışı azaldılmalı, resurslar *Copiers* və *Phones* istiqamətinə yönəldilməlidir).
+* **Region və Şəhər Riskləri:** Filtrlənmiş zərərli şəhərlərin (xüsusilə *Philadelphia* və *Houston*) şirkətə xalis zərər vurduğu aşkarlandı. (Qərar: Logistika xərcləri təftiş olunmalı və bu şəhərlərdəki aqressiv satış dayandırılmalıdır).
+* **Endirim Strategiyası:** 20%-ə qədər endirimlərin gəlirli olduğu, lakin 30% və üzəri endirimlərin şirkəti birbaşa zərərə apardığı müəyyən edildi. (Qərar: Şirkətdə maksimum endirim limiti 20% olaraq bloklanmalıdır).
+* **Müştəri Riskləri:** Şirkətə ən çox zərər vuran top müştərilər (*Cindy Stewart*, *Grant Thornton*) müəyyən olundu. (Qərar: Növbəti sifarişlərdə onlara edilən endirimlər tam kəsilməlidir).
+* **Trend və Mövsümlülük:** Biznesin ildən-ilə stabil böyüdüyü (2023-2026), sifariş yükünün isə Noyabr-Dekabr aylarında pik həddə çatdığı, Fevralda isə ən aşağı səviyyəyə düşdüyü tapıldı. (Qərar: Payızın sonu logistika işçi qüvvəsi artırılmalı, Yanvar-Aprel dalğalanmalarına qarşı Dekabr mənfəətindən maliyyə yastığı ayrılmalıdır).
 
-*   **Məlumatların Təmizlənməsi (Data Cleaning):** Xam datadakı sistem xətalarını, dublikatları və format uyuşmazlıqlarını aradan qaldırmaq.
-*   **Relyasion Model Qurulması:** Excel-i bir verilənlər bazası kimi istifadə edərək fərqli vərəqlərdəki dataları açar sütunlar üzərindən əlaqələndirmək.
-*   **İnteraktiv Hesabatlıq (Dashboarding):** Dilimləyicilər (Slicers) və şərti formatlaşdırma vasitəsilə rəhbərliyin anlıq qərar qəbul edə biləcəyi vizual iyerarxiya qurmaq.
+---
 
+### 📊 Vizual Hesabatlıq (Interactive Dashboard)
+* **Bazar Payı Analizi:** Regionlar üzrə ümumi satış payını göstərən `Pie Chart`.
+* **Mənfəət Müqayisəsi:** Kateqoriyalar üzrə qazancları vizuallaşdıran `Column Chart`.
+* **Tranzaksiya Həcmi:** Gəlir/Zərər statuslarının say bölgüsünü izləyən `Bar Chart`.
+* **Şərti Formatlaşdırma:** Biznes hədəflərini keçən və yüksək xalis mənfəət qazandıran kateqoriyaları (*Office Supplies*) anında fərqləndirən **yaşıl rəng indikatoru** tətbiq edildi.
 📁 **Dashboard faylının vizualı üçün baxın:** `image/excelDashboard.png`
 
 ✍️ **Müəllif:** Turqay Tahirov  
