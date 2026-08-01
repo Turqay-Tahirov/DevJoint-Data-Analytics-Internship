@@ -3,19 +3,17 @@
 Bu repozitoriya, **DevJoint** tərəfindən təşkil olunmuş 4 həftəlik Data Analitika təcrübə proqramı çərçivəsində hazırladığım bütün tapşırıqları, SQL sorğularını, data analizlərini və hesabatlarımı özündə birləşdirir.
 ---
 
-### 🗄️ İstifadə Olunan Verilənlər Bazası (Database)
-Bu layihədəki sorğular GitHub-a əlavə edilmiş **Northwind** verilənlər bazası üzərində qurulmuşdur: 
-*   **Baza faylı:** [`northwind_database.sql`](northwind.db)
 ---
 
-## 📁 Layihə Quruluşu (Project Structure)
+📁 Layihə Quruluşu (Project Structure)
 
 Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukturlaşdırılıb:
 
-*   **`Week_1_SQL_Basics_to_Advanced/`** – SQL sorğuları (Əsas və JOIN-lar).
-*   **`Week_2_Excel_Google_Sheets_Analysis/`** – Excel analitikası və Dashboard (Tezliklə).
-*   **`Week_3_BI_Dashboard/`** – Power BI / Tableau vizuallaşdırma (Tezliklə).
-*   **`Week_4_Business_Case_Analysis/`** – Biznes Keys analizi və hesabat (Tezliklə).
+└── Week_1_SQL_Basics_to_Advanced/ – SQL sorğuları (Əsas və JOIN-lar).
+    └── northwind_database.sql – Layihədə istifadə olunan Northwind verilənlər bazası faylı.
+└── Week_2_Excel_Google_Sheets_Analysis/ – Excel analitikası və Dashboard (Tezliklə).
+└── Week_3_BI_Dashboard/ – Power BI / Tableau vizuallaşdırma (Tezliklə).
+└── Week_4_Business_Case_Analysis/ – Biznes Keys analizi və hesabat (Tezliklə).
 ---
 
 ## 🔑 Week 1: SQL Əsaslardan Qabaqcıl Səviyyəyə
