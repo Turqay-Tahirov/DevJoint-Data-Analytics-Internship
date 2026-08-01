@@ -279,173 +279,49 @@ CREATE INDEX idx_orders_ship_country_city
 ON Orders (ShipCountry, ShipCity);
 ```
 
-# DevJoint Təcrübə Proqramı — Satış və Mənfəət Analizi Portfel Layihəsi
+# 📊 Sales & Profit Analytics Dashboard (Excel)
 
-Bu layihədə şirkətin satış, mənfəət, müştəri və region məlumatları analiz edilmiş, Excel vasitəsilə məlumatların təmizlənməsi (Data Cleaning), inteqrasiyası, biznes suallarının cavablandırılması və interaktiv hesabatlığın (Dashboard) qurulması mərhələləri icra olunmuşdur.
+Bu repository, **Northwind** verilənlər bazasından çıxarılan xam satış verilənlərinin Excel mühitində təmizlənməsi, qabaqcıl verilən inteqrasiyası funksiyaları ilə relyasion modelin qurulması və rəhbərlik üçün interaktiv hesabat panelinin (**Dashboard**) hazırlanması prosesini əhatə edir.
 
-## 🔑 Week 2: Excel ilə Data Analitikası və Dashboard
+> 🛠️ **Texnologiyalar:** MS Excel  
+> 📁 **Resurslar:** `northwind_database.db` | `excelDashboard.png` (Dashboard Vizualı)
 
-Bu həftənin məqsədi bazadan çıxarılan xam verilənlərin Excel mühitində təmizlənməsi, funksiyalar vasitəsilə analiz edilməsi və rəhbərlik üçün dinamik (interaktiv) hesabat panelinin (Dashboard) hazırlanmasıdır.
+---
 
-### 📌 Əhatə Olunan Excel Mövzuları
-| # | Mövzu | Təsvir |
+### 🗺️ Layihənin Yol Xəritəsi (Mövzular və Checkpoint-lər)
+
+Məlumatların idarə edilməsi və analitik hesabatlıq mərhələlərini bir baxışda anlamaq üçün icmal cədvəli:
+
+| Checkpoint | Excel Mövzuları / Funksiyaları | Biznes Ssenarisi və Analitik Tapşırıq |
 | :--- | :--- | :--- |
-| **1** | **Cədvəl daxilində data təmizləmə** | Unikal dəyərlərin tapılması, boşluqların (`null`) və təkrarlanan sətirlərin təmizlənməsi |
-| **2** | **** | `IF`, `AND`, `OR`, `IFS` funksiyaları ilə şərti sütunların və kateqoriyaların yaradılması |
-| **3** | **Lookup Functions** | `XLOOKUP`, `VLOOKUP`, `INDEX` & `MATCH` vasitəsilə fərqli vərəqlərdən dataların çəkilməsi |
-| **4** | **Aggregation** | `SUMIFS`, `COUNTIFS`, `AVERAGEIFS` funksiyaları ilə şərtə bağlı dinamik hesablamalar |
-| **5** | **Pivot Tables** | Böyük verilənlər çoxluğunun sürətli şəkildə qruplaşdırılması və çarpaz analizlər |
-| **6** | **Data Visualization** | Biznes trendlərini göstərən qrafiklərin (Xətti, Sütunlu, Dairəvi) düzgün seçilməsi |
-| **7** | **Interactive Elements** | Slicer-lər (Dilimləyicilər) və Timeline vasitəsilə interaktiv idarəetmə panelinin qurulması |
-
-### 🗂️ Excel Checkpoint-lər
-| Checkpoint | Əhatə Etdiyi Analitik Mövzular |
-| :--- | :--- |
-| **Checkpoint 1** | Data transformaciyası, mətn funksiyaları (`LEFT`, `RIGHT`, `MID`) və formatların düzəldilməsi |
-| **Checkpoint 2** | `XLOOKUP` və inkişaf etmiş riyazi/məntiqi funksiyalarla relyasion modelin qurulması |
-| **Checkpoint 3** | Müştəri, Satış və Region profilləri üzrə `Pivot Table` hesabatlarının çıxarılması |
-| **Checkpoint 4** | KPI (Əsas Effektivlik Göstəriciləri) kartlarının dizayn edilməsi və vizual iyerarxiya |
-| **Checkpoint 5** | Dinamik Filtrlərlə (Slicers) təchiz olunmuş interaktiv Satış Dashboard-unun tamamlanması |
-| **Checkpoint 6** | İstifadə olunan formulaların qısa sənədləşdirilməsi |
+| **📌 CP 1** | `LEFT`, `RIGHT`, `MID`, Data Cleaning | Dublikat/boş sətirlərin silinməsi, rəqəm və tarix formatlarının standartlaşdırılması |
+| **📌 CP 2** | `Pivot Tables`, `Data Visualization` | Məhsul, region, endirim strategiyası, müştəri riskləri və mövsümlülük üzrə 7 kritik biznes sualının təhlili |
+| **📌 CP 3** | `XLOOKUP`, `INDEX & MATCH` | `Returns` və `Products` vərəqlərindən geri qaytarılma, tədarükçü və maya dəyəri məlumatlarının əsas cədvələ inteqrasiyası |
+| **📌 CP 4** | `SUMIFS`, `IF`, `AND`, `OR` | Region üzrə ümumi satış gücünün və mənfəətə görə "Gəlir/Zərər" statusunun dinamik hesablanması |
+| **📌 CP 5** | `Pie, Column & Bar Charts`, `Slicers` | Region satışı, kateqoriya mənfəəti və tranzaksiya statuslarını göstərən interaktiv idarəetmə panelinin qurulması |
+| **📌 CP 6** | Formula Sənədləşdirilməsi | Tətbiq olunan makro-funksiyaların, pivot arxitekturalarının və KPI kartlarının strukturlaşdırılması |
 
 ---
 
-## 🗃️ Resurslar və Alətlər
+### 📊 Biznes İnsaydları və Strateji Qərarlar (Executive Summary)
 
-* **Verilənlər Bazası Faylı:** [`northwind_database.db`](Week_1_SQL_Basics_to_Advanced/northwind.db)
-* **İstifadə Olunan Texnologiyalar:** SQL (SQLite), Microsoft Excel / Google Sheets
-* **Proqram təminatı:** DB Browser for SQLite, MS Excel
+Pivot Table analizi nəticəsində şirkətin rentabelliyini artırmaq üçün növbəti addımlar müəyyən edilmişdir:
 
----
-
-## Checkpoint 1: Məlumatların Təmizlənməsi (Data Cleaning)
-
-Cədvəl daxilində hesablamaların düzgünlüyünü təmin etmək üçün aşağıdakı təmizləmə və standartlaşdırma addımları yerinə yetirilmişdir:
-
-1. **Təkrarlanan sətirlərin silinməsi:** Eyni müştəriyə və sifarişə aid alt-alta düşən dublikat sətirlər datadan kənarlaşdırılmışdır.
-2. **Boş sətirlərin silinməsi:** Cədvəlin ortasında qalan və gələcəkdə statistik göstəriciləri korlaya biləcək tamamilə boş sətirlər təmizlənmişdir.
-3. **Sıra nömrələrinin düzəldilməsi:** Sistem xətası ucbatından fərqli sifarişlərə verilmiş eyni sıra nömrələri düzəldilmiş və ardıcıllıq bərpa olunmuşdur.
-4. **Boşluqların vizual tapılması:** Cədvəldə gizlənən boş hüceyrələri vizual aşkar etmək üçün analitik məqsədlə şrift (font) dəyişdirmə metodundan istifadə edilmişdir.
-5. **Tarixlərin yoxlanılması:** Sifariş və çatdırılma tarixlərinin formatı yoxlanılmış, xronoloji uyğunluq təsdiqlənmişdir.
-6. **Rəqəmlərin standart formata salınması:** Satış sayları tam rəqəmə çevrilmiş, pul göstəricilərindəki kəsrlər vergüldən sonra 2 rəqəm olacaq şəkildə eyniləşdirilmişdir.
-7. **Mənfi qazancların saxlanılması:** Profit (Mənfəət) sütunundakı mənfi rəqəmlərin xəta olmadığı, müştərilərə edilən yüksək endirimlərə görə şirkətin etdiyi real ziyan olduğu təsdiqlənərək datada saxlanılmışdır.
+*   **Məhsul Portfeli:** *Tables* (-17,753.21$) və *Bookcases* (-3,632.07$) alt kateqoriyalarının ciddi zərər etdiyi, *Technology* kateqoriyasının isə ən böyük gəlir mənbəyi olduğu tapılmışdır. (Qərar: Zərərli sahələrdə qiymət artımı edilməli, resurslar *Copiers* və *Phones* satışına yönəldilməlidir).
+*   **Region və Müştəri Riskləri:** *Philadelphia* və *Houston* şəhərlərinin, eləcə də müəyyən riskli müştəri qruplarının şirkətə ciddi xalis zərər vurduğu aşkar edilmişdir. (Qərar: Logistika xərcləri təftiş edilməli, bu subyektlərə tətbiq olunan xüsusi endirimlər ləğv olunmalıdır).
+*   **Endirim Strategiyası:** 20%-ə qədər olan endirimlərin gəlirli olduğu, lakin 30% və üzəri endirimlərin birbaşa zərər yaratdığı sübut edilmişdir. (Qərar: Şirkət üzrə maksimum endirim limiti 20% olaraq bloklanmalıdır).
+*   **Mövsümlülük (Seasonality):** Sifariş yükünün Noyabr və Dekabr aylarında pik həddə çatdığı, Fevralda isə minimuma endiyi tapılmışdır. (Qərar: Payızın son rübündə anbar işçi qüvvəsi artırılmalı, Yanvar ayı üçün Dekabr gəlirlərindən maliyyə yastığı ayrılmalıdır).
 
 ---
 
-## Checkpoint 2: Biznes Sualları və Pivot Table Analizi
+### 🎯 Qazanılan Bacarıqlar
 
-Biznesin mövcud vəziyyətini qiymətləndirmək üçün 7 kritik suala cavab axtarılmış və müvafiq strateji qərarlar hazırlanmışdır:
+*   **Məlumatların Təmizlənməsi (Data Cleaning):** Xam datadakı sistem xətalarını, dublikatları və format uyuşmazlıqlarını aradan qaldırmaq.
+*   **Relyasion Model Qurulması:** Excel-i bir verilənlər bazası kimi istifadə edərək fərqli vərəqlərdəki dataları açar sütunlar üzərindən əlaqələndirmək.
+*   **İnteraktiv Hesabatlıq (Dashboarding):** Dilimləyicilər (Slicers) və şərti formatlaşdırma vasitəsilə rəhbərliyin anlıq qərar qəbul edə biləcəyi vizual iyerarxiya qurmaq.
 
-### 1. Məhsul Portfeli Analizi
-* **Biznes sualı:** Hansı məhsul kateqoriyası və ya alt kateqoriyası zərər edir?
-* **Fakt:** Furniture (Mebel) kateqoriyası cəmi 19,706.64$ mənfəət verir. Buna səbəb Tables (-17,753.21$) və Bookcases (-3,632.07$) alt kateqoriyalarının zərərlə işləməsidir. Technology kateqoriyası isə 146,566.82$ ilə ən çox qazandırandır.
-* **Qərar:** Masaların (Tables) satış həcmi azaldılmalı və ya qiyməti qaldırılmalıdır. Resurslar daha yüksək gəlirli Copiers (56,093.94$) və Phones (45,074.27$) satışına yönəldilməlidir.
+📁 **Dashboard faylının vizualı üçün baxın:** `image/excelDashboard.png`
 
-### 2. Region və Şəhər Riskləri
-* **Biznes sualı:** Coğrafi olaraq hansı şəhərlərdə resurs itkisinə yol verilir?
-* **Fakt:** Zərərli şəhərlər ümumilikdə 390,453.99$ satış etsə də, şirkətə -75,330.21$ xalis zərər vurur. Ən böyük maliyyə zərbəsini Philadelphia (-13,837.77$) və Houston (-10,153.55$) şəhərləri vurur.
-* **Qərar:** Bu şəhərlərdə logistika və paylama xərcləri təftiş edilməli, rentabellilik problemi həll olunana qədər aqressiv marketinq və satış dayandırılmalıdır.
+✍️ **Müəllif:** Turqay Tahirov  
+*Bu layihə DevJoint Təcrübə Proqramı çərçivəsində, real data üzərində analitik və biznes hesabatlığı bacarıqlarını nümayiş etdirmək üçün hazırlanmışdır.*
 
-### 3. Endirim Strategiyasının Qiymətləndirilməsi
-* **Biznes sualı:** Hansı endirim faizləri şirkəti zərərə uğradır?
-* **Fakt:** 0% (326,707.09$), 10% (9,099.97$) və 20\% (91,079.95$) endirim dərəcələri mənfəət gətirir. Lakin endirim 30%-ə çatdıqda -10,501.39$, 40\%-ə çatdıqda ise -23,086.37$ birbaşa zərər yaranır.
-* **Qərar:** Şirkət üzrə maksimum endirim limiti 20% olaraq bloklanmalıdır. 30%-dən yuxarı endirim tətbiqinə qadağa qoyulmalıdır.
-
-### 4. Müştəri Riskləri
-* **Biznes sualı:** Ən yüksək zərər vuran top müştərilərimiz kimlərdir?
-* **Fakt:** Filtr olunmuş riskli müştəri qrupu şirkətə ümumilikdə -30,265.47$ xalis zərər vurur. Ən yüksək mənfi marja Cindy Stewart (-6,626.39$) və Grant Thornton (-4,108.66$) tərəfindən formalaşdırılıb.
-* **Qərar:** Bu müştərilərə satılan məhsulların qiymət marjasına yenidən baxılmalı və növbəti sifarişlərdə onlara edilən xüsusi endirimlər tamamilə ləğv edilməlidir.
-
-### 5. İllər üzrə İnkişaf Dinamikası
-* **Biznes sualı:** Biznes ildən-ilə stabil böyümə nümayiş etdirirmi?
-* **Fakt:** Bəli, biznes stabil böyüyür. Ümumi satışlar 2023-cü ildəki 493,659.72$-dan 2026-cı ildə 745,567.53$-a yüksəlmişdir. Eyni zamanda xalis mənfəət də 51,660.94$-dan 95,926.35$-a qalxmışdır.
-* **Qərar:** Böyümə tempi müsbətdir, mövcud qlobal satış və qiymət strategiyası qorunub saxlanılmalıdır.
-
-### 6. Sifariş Sayında Mövsümlülük (Seasonality)
-* **Biznes sualı:** İlin hansı aylarında logistika və əməliyyat yükü pik həddə çatır?
-* **Fakt:** Sifarişlərin sayı ilin son rübünə doğru kəskin artır. Ən yüksək sifariş yükü Noyabr (1,473 sifariş) və Dekabr (1,470 sifariş) aylarındadır. Ən sakit ay isə Fevraldır (300 sifariş).
-* **Qərar:** Payızın son aylarında logistika və anbar komandasının işçi qüvvəsi (outsourcing vasitəsilə) artırılmalı, Fevral ayında isə əməliyyat xərcləri minimuma endirilməlidir.
-
-### 7. Aylıq Mənfəət Trendi
-* **Biznes sualı:** Hansı dövrlərdə mənfəət zəifləyir və ya xalis zərər qeydə alınır?
-* **Fakt:** İlin ən gəlirli dövrü Dekabr (44,229.85$ mənfəət) ayıdır. Lakin Yanvar və Aprel aylarında ciddi dalğalanmalar var (məsələn, 2024-cü ilin Yanvarında -3,189.80$ zərər qeydə alınıb).
-* **Qərar:** Yanvar ayındakı zərər riskini kompensasiya etmək üçün Dekabr ayında əldə olunan yüksək mənfəətdən nağd pul ehtiyatı (maliyyə yastığı) ayrılmalıdır.
-
----
-
-## Checkpoint 3: Məlumatların İnteqrasiyası və Lookup Formulaları
-
-`Orders` (Sifarişlər) əsas cədvəlinə digər vərəqlərdən relyasion məlumatlar inteqrasiya edilmişdir. Sifariş kodları əsas götürülərək hansı malların geri qaytarıldığı (Returned) təyin olunmuş, həmçinin tədarükçü (Supplier) və maya dəyəri (Unit Cost) məlumatları cədvələ əlavə edilmişdir.
-
-* **Geri qaytarılma statusu (Returned) üçün:**
-  ```excel
-  =XLOOKUP(@B:B,Returns!A:A,Returns!B:B,"No")
-
-  Şərh: Sifariş kodunu Returns vərəqində axtarır, tapmadıqda xəta verməməsi üçün hüceyrəyə "No" yazır.
-
-###Tədarükçü (Supplier) məlumatı üçün:
-
-=XLOOKUP(@P:P,Products!A:A,Products!C:C,"Bilinmir")
-Şərh: Məhsul koduna əsasən Products vərəqindən müvafiq tədarükçü şirkətin adını cədvələ köçürür.
-
-Maya dəyəri (Unit Cost) üçün:
-
-Excel
-=INDEX(Products!D:D, MATCH(Orders!P2, Products!A:A, 0))
-Şərh: MATCH funksiyası məhsul kodunun digər vərəqdəki sətir nömrəsini tapır, INDEX isə həmin sətirə uyğun maya dəyərini gətirir.
-
-###Checkpoint 4: Hesablanan Sahələr və Məntiqi Funksiyalar
-
-Şərtləri qruplaşdırmaq və əməliyyatları kateqoriyalara ayırmaq məqsədilə ana cədvəldə iki yeni analitik sütun yaradılmışdır:
-
-Region üzrə ümumi satış həcmi (Region_Total_Sales):
-
-Excel
-=SUMIFS(T:T, O:O, O2)
-Şərh: Cari sətirdəki regiona uyğun gələn bütün satışları cəmləyərək hər bir bölgənin ümumi satış gücünü dinamik təyin edir.
-
-Rentabellilik statusu (Status):
-
-Excel
-=IF(W2 < 0, "Zərər", "Gəlir")
-Şərh: Mənfəət (Profit) dəyəri sıfırdan kiçik olduqda "Zərər", əks halda "Gəlir" statusu formalaşdırır.
-
-###Checkpoint 5: Dashboard və Şərti Formatlaşdırma
-Datanın vizual analizi və əsas performans göstəricilərinin (KPI) izlənilməsi üçün 3 fərqli qrafik tipindən ibarət dinamik dashboard hazırlanmışdır.
-
-İstifadə Olunan Qrafik Tipləri:
-Pie Chart (Dairəvi diaqram): Regionlar üzrə ümumi satış payını və bazar bölgüsünü göstərmək üçün.
-
-Column Chart (Sütunlu diaqram): Kateqoriyalar üzrə mənfəət/zərər müqayisəsini vizuallaşdırmaq üçün.
-
-Bar Chart (Üfüqi sütunlu diaqram): Tranzaksiyaların gəlir/zərər statuslarının say və həcmi üzrə bölgüsünü izləmək üçün.
-
-Şərti Formatlaşdırma (Conditional Formatting):
-Biznes hədəflərini vizual olaraq anında fərqləndirmək üçün pivot cədvəllərdə şərti formatlaşdırma tətbiq olunmuşdur. Şirkətə yüksək xalis mənfəət qazandıran və hədəfi keçən kateqoriyalar (məsələn, Office Supplies) xüsusi yaşıl rəng indikatoru ilə vurğulanmışdır.
-
-###Checkpoint 6: Formulaların Texniki Quruluşu və Sənədləşmə
-1. Pivot Cədvəllərin Quruluş Arxitekturası (Checkpoint 2)
-Məhsul Portfeli: Satırlar: Category -> Sub-Category | Dəyərlər: Sum of Profit
-
-* **Region və Şəhər:** Satırlar: Region -> City | Dəyərlər: Sum of Sales, Sum of Profit | Filtr: Profit < 0
-
-* **Endirim Strategiyası:** Satırlar: Discount | Dəyərlər: Sum of Profit
-
-* **Müştəri Riskləri:** Satırlar: Customer Name | Dəyərlər: Sum of Profit | Sıralama: Profit (Artan sıra ilə)
-
-* **İllik Trend:** Satırlar: Order Date (Years) | Dəyərlər: Sum of Sales, Sum of Profit
-
-* **Mövsümlülük:** Satırlar: Order Date (Months) | Dəyərlər: Count of Order ID
-
-* **Aylıq Trend:** Satırlar: Order Date (Months) | Sütunlar: Order Date (Years) | Dəyərlər: Sum of Profit
-
-###2. Dashboard Cədvəl Quruluşları (Checkpoint 5)
-* **Regionlar üzrə Satış Payı (Pie Chart):** Satırlar: Region | Dəyərlər: Sum of Sales
-
-* **Kateqoriyalar üzrə Mənfəət (Column Chart):** Satırlar: Category | Dəyərlər: Sum of Profit
-
-* **Statusun Sayı (Bar Chart):** Satırlar: Status | Dəyərlər: Count of Status
-
-* **Qeyd:** Dashboard vizualının daha peşəkar görünməsi üçün bütün Pivot qrafiklərinin sahə düymələri (Field Buttons) gizlədilmişdir.
-
-🔗 Dashboard Faylına baxış: Google Drive Linki: image/excelDashboard.png
