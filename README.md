@@ -10,11 +10,11 @@ Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukt
 
 | Qovluq / Fayl | Təsvir | Status |
 | :--- | :--- | :--- |
-| 📁 **`Week_1_SQL_Basics_to_Advanced/`** | SQL sorğuları (Əsas və JOIN-lar) | 🔄 Yoxlamadadır |
-| └── 📄 *`northwind.db`* | Layihədə istifadə olunan verilənlər bazası | ✅ Əlavə edilib |
-| 📁 **`Week_2_Excel_Google_Sheets_Analysis/`** | Excel analitikası və Dashboard | ⏳ Tezliklə |
-| 📁 **`Week_3_BI_Dashboard/`** | Power BI / Tableau vizuallaşdırma | ⏳ Tezliklə |
-| 📁 **`Week_4_Business_Case_Analysis/`** | Biznes Keys analizi və hesabat | ⏳ Tezliklə |
+| 📁 **`Week_1_SQL_Basics_to_Advanced/`** | SQL sorğuları (Əsas və JOIN-lar)
+| └── 📄 *`northwind.db`* | Layihədə istifadə olunan verilənlər bazası
+| 📁 **`Week_2_Excel_Google_Sheets_Analysis/`** | Excel analitikası və Dashboard 
+| 📁 **`Week_3_BI_Dashboard/`** | Power BI / Tableau vizuallaşdırma 
+| 📁 **`Week_4_Business_Case_Analysis/`** | Biznes Keys analizi və hesabat
 ---
 
 ### 🔑 Week 1: SQL Əsaslardan Qabaqcıl Səviyyəyə (İcmal)
