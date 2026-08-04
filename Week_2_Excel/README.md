@@ -37,4 +37,4 @@ Bu həftə Excel mühitində böyük satış datası üzərində məlumatların 
 
   
 📸 **Dashboard faylının vizualı:**
-[![Excel Dashboard](image/excelDashboard.png)](image/excelDashboard.png)
+[![Excel Dashboard](image/excelDashboard.png)](../image/excelDashboard.png)
