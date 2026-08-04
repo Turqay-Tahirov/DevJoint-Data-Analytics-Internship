@@ -36,5 +36,4 @@ Bu həftə Excel mühitində böyük satış datası üzərində məlumatların 
 * **Şərti Formatlaşdırma:** Biznes hədəflərini keçən və yüksək xalis mənfəət qazandıran kateqoriyaları (*Office Supplies*) anında fərqləndirən **yaşıl rəng indikatoru** tətbiq edildi.
 
   
-📸 **Dashboard faylının vizualı:**
-[![Excel Dashboard](image/excelDashboard.png)](../image/excelDashboard.png)
+![Excel Dashboard](../image/excelDashboard.png)
