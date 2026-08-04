@@ -11,20 +11,9 @@ Aşağıdakı cədvəldən hər bir həftənin qovluğuna və **ətraflı hesaba
 | Həftə | Mövzu | İstfadə Olunan Alətlər | Ətraflı Hesabat |
 | :--- | :--- | :--- | :--- |
 | **Week 1** | SQL Əsaslardan Qabaqcıl Səviyyəyə | SQLite, SQL (JOINs, CTE, Window Functions) | [🔗 Readme-yə keçid](./Week_1_SQL_Basics_to_Advanced/README.md) |
-| **Week 2** | Excel & Google Sheets Analitikası və Dashboard | Excel (XLOOKUP, INDEX/MATCH, Dynamic Dashboards) | [🔗 Readme-yə keçid](./Week_2_Excel_Google_Sheets_Analysis/README.md) |
-| **Week 3** | Power BI / Python Data Visualization | Python, Power BI, DAX | [🔗 Readme-yə keçid](./Week_3_Python_PowerBI/README.md) |
-| **Week 4** | Biznes Keys Analizi və Yekun Hesabatlıq | End-to-End Analytics, Presentation | [🔗 Readme-yə keçid](./Week_4_Business_Case_Analysis/README.md) |
-
----
-
-## 👤 Müəllif
-* **Turqay Tahirov** - *Data Analyst*
-
-------------------------
-
-# 📊 DevJoint Data Analytics Internship Program
-
-Bu repozitoriya, **DevJoint** tərəfindən təşkil olunmuş 4 həftəlik Data Analitika təcrübə proqramı çərçivəsində hazırladığım bütün tapşırıqları, SQL sorğularını, data analizlərini və hesabatlarımı özündə birləşdirir.
+| **Week 2** | Excel / Google Sheets Analizi | Excel (XLOOKUP, INDEX/MATCH, IF/IFS) | [🔗 Readme-yə keçid](./Week_2_Excel_Google_Sheets_Analysis/README.md) |
+| **Week 3** | BI Dashboard (Tableau Public / Power BI) | Power BI, DAX | [🔗 Readme-yə keçid](./Week_3_Python_PowerBI/README.md) |
+| **Week 4** | Biznes Keys Analizi + Hesabat | End-to-End Analytics, Presentation | [🔗 Readme-yə keçid](./Week_4_Business_Case_Analysis/README.md) |
 
 ---
 
@@ -39,11 +28,6 @@ Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukt
 | 📁 **`Week_2_Excel_Google_Sheets_Analysis/`** | Excel analitikası və Dashboard |
 | 📁 **`Week_4_Business_Case_Analysis/`** | Biznes Keys analizi və hesabat |
 
-
-
-  
-📸 **Dashboard faylının vizualı:**
-[![Excel Dashboard](image/excelDashboard.png)](image/excelDashboard.png)
 
 ✍️ **Müəllif:** Turqay Tahirov  
 *Bu layihə DevJoint Təcrübə Proqramı çərçivəsində, real data üzərində analitik və biznes hesabatlığı bacarıqlarını nümayiş etdirmək üçün hazırlanmışdır.*
