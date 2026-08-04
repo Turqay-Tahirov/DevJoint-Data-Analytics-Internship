@@ -9,12 +9,11 @@ Bu repozitoriya, **DevJoint** tərəfindən təşkil olunmuş 4 həftəlik Data 
 Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukturlaşdırılıb:
 
 | Qovluq / Fayl | Təsvir |
-| :--- | :--- | :--- |
-| 📁 **`Week_1_SQL_Basics_to_Advanced/`** | SQL sorğuları (Əsas və JOIN-lar) 
-| └── 📄 *`northwind.db`* | Layihədə istifadə olunan verilənlər bazası
-| 📁 **`Week_2_Excel_Google_Sheets_Analysis/`** | Excel analitikası və Dashboard  
-| 📁 **`Week_4_Business_Case_Analysis/`** | Biznes Keys analizi və hesabat 
----
+| :--- | :--- |
+| 📁 **`Week_1_SQL_Basics_to_Advanced/`** | SQL sorğuları (Əsas və JOIN-lar) |
+| └── 📄 *`northwind.db`* | Layihədə istifadə olunan verilənlər bazası |
+| 📁 **`Week_2_Excel_Google_Sheets_Analysis/`** | Excel analitikası və Dashboard |
+| 📁 **`Week_4_Business_Case_Analysis/`** | Biznes Keys analizi və hesabat |
 
 ### 🔑 Week 1: SQL Əsaslardan Qabaqcıl Səviyyəyə (İcmal)
 
