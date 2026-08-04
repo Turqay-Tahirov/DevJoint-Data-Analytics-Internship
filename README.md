@@ -25,8 +25,9 @@ Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukt
 | :--- | :--- |
 | 📁 **`Week_1_SQL_Basics_to_Advanced/`** | SQL sorğuları (Əsas və JOIN-lar) |
 | └── 📄 *`northwind.db`* | Layihədə istifadə olunan verilənlər bazası |
-| 📁 **`Week_2_Excel_Google_Sheets_Analysis/`** | Excel analitikası və Dashboard |
-| 📁 **`Week_4_Business_Case_Analysis/`** | Biznes Keys analizi və hesabat |
+| 📁 **`Week_2_Excel / Google Sheets Analizi/`** | Excel analitikası və Dashboard |
+| 📁 **`Week_3_BI Dashboard (Tableau Public / Power BI)/`** | PowerBI,DAX |
+| 📁 **`Week_4_Biznes Keys Analizi_Hesabat/`** | Biznes Keys analizi və hesabat |
 
 
 ✍️ **Müəllif:** Turqay Tahirov  
