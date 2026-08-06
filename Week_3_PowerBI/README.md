@@ -72,7 +72,9 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 4. **Ümumi Mənfəət (25.12M):** `FactSales` cədvəlindəki `Profit` sütunu əsasında kartın dəyərinə əlavə olunub.
 5. **Satış Miqdarı (300K):** `FactSalesTarget` cədvəlindəki `Quantity` sütunundan formalaşıb.
 
-![Qrafiklər Analizi]()---
+![Qrafiklər Analizi](week3-cp-2-kpi-cards.png)
+
+---
 
 
 ## 🎨 Checkpoint 5: Dashboard Dizaynı və UI/UX
@@ -81,8 +83,8 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 * **Ardıcıl Rəng Sxemi:** Modern tünd mövzu (Dark Theme) tətbiq olunmuş, kontrast təmin etmək üçün neon mavi və tünd göy tonlarından istifadə edilmişdir.
 * **İnteraktiv Süzgəclər (Slicers):** Dashboard *Tarix Aralığı*, *Satış Kanalı*, *Ölkə* və *Loyallıq Dərəcəsi* süzgəcləri vasitəsilə dinamik filtrasiya olunur.
 
+![Qrafiklər Analizi](week3-cp-2-Dashboard.png)
 
-![Qrafiklər Analizi](week3-cp5-Dashboard.png)
 ---
 
 ## 🧮 Checkpoint 6: Daxil Edilmiş DAX Ölçüləri (Measures)
