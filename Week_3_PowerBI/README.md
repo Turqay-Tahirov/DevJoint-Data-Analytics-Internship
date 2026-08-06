@@ -55,7 +55,7 @@ Hesabatda məlumatları dinamik təhlil edə bilmək üçün 4 interaktiv slicer
 3. **Dropdown Slicer – Ölkə:** Göstəriciləri coğrafi baxımdan filterləyərək regionları müqayisə etmək üçün tətbiq olunub.
 4. **Dropdown Slicer – Loyallıq Dərəcəsi:** Müştərilərin loyallıq səviyyəsinə (*Loyalty Tier*) görə satış mənfəətini analiz etməyə şərait yaradır.
 
-![Qrafiklər Analizi](week3-cp-2.png)
+![Qrafiklər Analizi](week3-cp-2-slicer.png)
 
 ---
 
@@ -72,7 +72,7 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 4. **Ümumi Mənfəət (25.12M):** `FactSales` cədvəlindəki `Profit` sütunu əsasında kartın dəyərinə əlavə olunub.
 5. **Satış Miqdarı (300K):** `FactSalesTarget` cədvəlindəki `Quantity` sütunundan formalaşıb.
 
-![Qrafiklər Analizi](week3-cp-2.png)---
+![Qrafiklər Analizi]()---
 
 
 ## 🎨 Checkpoint 5: Dashboard Dizaynı və UI/UX
@@ -82,7 +82,7 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 * **İnteraktiv Süzgəclər (Slicers):** Dashboard *Tarix Aralığı*, *Satış Kanalı*, *Ölkə* və *Loyallıq Dərəcəsi* süzgəcləri vasitəsilə dinamik filtrasiya olunur.
 
 
-<!-- Şəkil əlavə etmək üçün: ![Interaktiv Filtrlər](sekil_linki_buraya) -->
+![Qrafiklər Analizi](week3-cp5-Dashboard.png)
 ---
 
 ## 🧮 Checkpoint 6: Daxil Edilmiş DAX Ölçüləri (Measures)
