@@ -42,7 +42,7 @@ Hesabatda data strukturlarına tam uyğun gələn 5 fərqli qrafik tipindən ist
 * Alt-kateqoriyalar arasında satış sayına görə **Utensils** (26K / 32.39%) digərlərindən nəzərəçarpan dərəcədə fərqlənir.
 * Satış məbləğləri illər üzrə kəskin dəyişikliyə məruz qalmayıb, **10.0M – 10.2M** aralığında sabit xətt üzrə devam etmişdir. Şirkət ən yüksək satışı **2019-cu ildə (10.2M)** reallaşdırmışdır.
 
-<!-- Şəkil əlavə etmək üçün: ![Qrafiklər Analizi](sekil_linki_buraya) -->
+![Qrafiklər Analizi](week3-cp-2.png)
 
 ---
 
@@ -55,7 +55,7 @@ Hesabatda məlumatları dinamik təhlil edə bilmək üçün 4 interaktiv slicer
 3. **Dropdown Slicer – Ölkə:** Göstəriciləri coğrafi baxımdan filterləyərək regionları müqayisə etmək üçün tətbiq olunub.
 4. **Dropdown Slicer – Loyallıq Dərəcəsi:** Müştərilərin loyallıq səviyyəsinə (*Loyalty Tier*) görə satış mənfəətini analiz etməyə şərait yaradır.
 
-<!-- Şəkil əlavə etmək üçün: ![Interaktiv Filtrlər](sekil_linki_buraya) -->
+![Qrafiklər Analizi](week3-cp-2.png)
 
 ---
 
@@ -72,8 +72,7 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 4. **Ümumi Mənfəət (25.12M):** `FactSales` cədvəlindəki `Profit` sütunu əsasında kartın dəyərinə əlavə olunub.
 5. **Satış Miqdarı (300K):** `FactSalesTarget` cədvəlindəki `Quantity` sütunundan formalaşıb.
 
-<!-- Şəkil əlavə etmək üçün: ![Interaktiv Filtrlər](sekil_linki_buraya) -->
----
+![Qrafiklər Analizi](week3-cp-2.png)---
 
 
 ## 🎨 Checkpoint 5: Dashboard Dizaynı və UI/UX
