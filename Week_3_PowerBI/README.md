@@ -83,7 +83,7 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 * **Ardıcıl Rəng Sxemi:** Modern tünd mövzu (Dark Theme) tətbiq olunmuş, kontrast təmin etmək üçün neon mavi və tünd göy tonlarından istifadə edilmişdir.
 * **İnteraktiv Süzgəclər (Slicers):** Dashboard *Tarix Aralığı*, *Satış Kanalı*, *Ölkə* və *Loyallıq Dərəcəsi* süzgəcləri vasitəsilə dinamik filtrasiya olunur.
 
-![Qrafiklər Analizi](week3-cp-2-Dashboard.png)
+![Qrafiklər Analizi](week3-cp5-Dashboard.png)
 
 ---
 
