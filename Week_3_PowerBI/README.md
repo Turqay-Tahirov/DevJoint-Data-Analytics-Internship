@@ -68,7 +68,13 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 3. **Hədəfə Çatma Faizi (95.24%):** DAX ölçüsü (`Measure`) vasitəsilə satış məbləğinin (70.64M) hədəf satış məbləğinə (74.17M) nisbəti hesablanıb:
    ```dax
    Hədəfə Çatma Faizi = DIVIDE(SUM(FactSales[SalesAmount]), SUM(FactSalesTarget[TargetSalesAmount]), 0)
+
+4. **Ümumi Mənfəət (25.12M):** `FactSales` cədvəlindəki `Profit` sütunu əsasında kartın dəyərinə əlavə olunub.
+5. **Satış Miqdarı (300K):** `FactSalesTarget` cədvəlindəki `Quantity` sütunundan formalaşıb.
+
+<!-- Şəkil əlavə etmək üçün: ![Interaktiv Filtrlər](sekil_linki_buraya) -->
 ---
+
 
 ## 🎨 Checkpoint 5: Dashboard Dizaynı və UI/UX
 
@@ -76,6 +82,8 @@ Biznes göstəricilərini operativ qiymətləndirmək üçün dashboard-un yuxar
 * **Ardıcıl Rəng Sxemi:** Modern tünd mövzu (Dark Theme) tətbiq olunmuş, kontrast təmin etmək üçün neon mavi və tünd göy tonlarından istifadə edilmişdir.
 * **İnteraktiv Süzgəclər (Slicers):** Dashboard *Tarix Aralığı*, *Satış Kanalı*, *Ölkə* və *Loyallıq Dərəcəsi* süzgəcləri vasitəsilə dinamik filtrasiya olunur.
 
+
+<!-- Şəkil əlavə etmək üçün: ![Interaktiv Filtrlər](sekil_linki_buraya) -->
 ---
 
 ## 🧮 Checkpoint 6: Daxil Edilmiş DAX Ölçüləri (Measures)
