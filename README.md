@@ -31,4 +31,5 @@ Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukt
 
 
 ✍️ **Müəllif:** Turqay Tahirov  
+
 *Bu layihə DevJoint Təcrübə Proqramı çərçivəsində, real data üzərində analitik və biznes hesabatlığı bacarıqlarını nümayiş etdirmək üçün hazırlanmışdır.*
