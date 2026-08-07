@@ -13,7 +13,7 @@ Aşağıdakı cədvəldən hər bir həftənin qovluğuna və **ətraflı hesaba
 | **Week 1** | SQL Əsaslardan Qabaqcıl Səviyyəyə | SQLite, SQL (JOINs, CTE, Window Functions) | [🔗 Readme-yə keçid](./Week_1_SQL/README.md) |
 | **Week 2** | Excel / Google Sheets Analizi | Excel (XLOOKUP, INDEX/MATCH, IF/IFS) | [🔗 Readme-yə keçid](./Week_2_Excel/README.md) |
 | **Week 3** | BI Dashboard (Tableau Public / Power BI) | Power BI, DAX | [🔗 Readme-yə keçid](./Week_3_PowerBI/README.md) |
-| **Week 4** | Biznes Keys Analizi + Hesabat | End-to-End Analytics, Presentation | [🔗 Readme-yə keçid](./Week_4_BiznesKeysAnalizi_Hesabat/README.md) |
+| **Week 4** | Biznes Keys Analizi + Hesabat | End-to-End Analytics, Presentation | [🔗 Readme-yə keçid](./Week_4_BusinessCaseAnalysis/README.md) |
 
 ---
 
