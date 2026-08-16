@@ -86,36 +86,42 @@ Kök-səbəb araşdırmasının nəticəsi:
 Yekun Kök-səbəb: İlin sonuna doğru Paid Social kimi baha kanallara artıq büdcə ayrılması və ROAS-ın düşməsidir. Black Friday gəliri bu səmərəsizliyi müvəqqəti gizlədir.
 
 ### CHECKPOINT 4: Narrativi dəstəkləyən vizuallaşdırma
-Ekran görüntüsü linki
-(Hazırladığın Lightshot/Drive linkini bura qoy)
 
+**Ekran görüntüsü linki:**  
+*(Hazırladığın Lightshot/Drive linkini bura daxil et)*
 
+**İzah:**  
 Təqdim olunan vizuallaşdırma iki əsas biznes iddiasını sübut edir:
-1. **Sol qrafik Paid Social kanalının kəskin aşağı ROAS (4) verməsini və Email/Organic Search-ün əsas mənfəət mənbəyi olduğunu sübut edir.**
-2. **Sağ qrafik isə Noyabr ayındakı gəlir pikini (1.35M$) və mövsümlülük (Black Friday) effektini aydın göstərir.**
-   
+
+* **Sol qrafik:** Paid Social kanalının kəskin aşağı ROAS (~4) verməsini və Email/Organic Search-ün əsas mənfəət mənbəyi olduğunu göstərir.
+* **Sağ qrafik:** Noyabr ayındakı gəlir pikini (~1.35M$) və mövsümlülük (Black Friday) effektini aydın şəkildə nümayiş etdirir.
+
+---
+
 ### CHECKPOINT 5: Yazılı xülasə
 
-Ümumi vəziyyət
+**Ümumi vəziyyət**  
 2024 və 2025-ci illərin ikinci yarısını (İyul–Dekabr) müqayisə edəndə görürük ki, ümumi gəlirimiz artıb. Xüsusən Noyabr ayında Black Friday endirimləri sayəsində satışlar pik həddə çatır. Amma gəlir artsa da, reklam kanallarının qazancı (ROAS) arasında böyük fərq var — bəzi kanallar çox yaxşı qazandırır, bəziləri isə demək olar ki, havaya xərcdir.
 
-Tapıntılar
-* Pul tələb edən reklamlar zəifdir: Ən çox pul tökdüyümüz Paid Social (ROAS: 4) və Paid Search (ROAS: 5) reklamları xərcini çətin çıxarır.
-* Pulsuz/ucuz kanallar qazandırır: Email (ROAS: 130) və Organic Search / SEO (ROAS: 106) bizə demək olar ki, xərcsiz ən böyük mənfəəti gətirir.
-* Noyabr bumu: 2025-ci ilin Noyabrında gəlirimiz 2024-ün eyni ayı ilə müqayisədə 1.22M$-dan 1.35M$-a qalxıb.
+**Əsas Tapıntılar:**  
+* **Pul tələb edən reklamlar zəifdir:** Ən çox pul tökdüyümüz Paid Social (ROAS: 4) və Paid Search (ROAS: 5) reklamları xərcini çətin çıxarır.
+* **Pulsuz/ucuz kanallar qazandırır:** Email (ROAS: 130) və Organic Search / SEO (ROAS: 106) bizə demək olar ki, xərcsiz ən böyük mənfəəti gətirir.
+* **Noyabr bumu:** 2025-ci ilin Noyabrında gəlirimiz 2024-ün eyni ayı ilə müqayisədə 1.22M$-dan 1.35M$-a qalxıb.
 
-Tövsiyə
+**Tövsiyə:**  
 * Qazanc gətirməyən Paid Social və Paid Search reklamlarının büdcəsini azaldıb tənzimləmək lazımdır.
 * Ən çox mənfəət gətirən Email göndərişlərinə və saytın axtarışda öndə çıxmasına (SEO) daha çox diqqət ayırmaq lazımdır.
 * Reklam büdcəsinin böyük hissəsini Dekabrda xərcləməkdənsə, satışın coşduğu Noyabr (Black Friday) ərəfəsinə saxlamalıyıq.
-  
+
+---
+
 ### CHECKPOINT 6: Ən azı 1 konkret, əməli tövsiyə
 
 Bizim analizin nəticəsinə əsasən, belə bir konkret addım atmaq lazımdır:
 
-1. **Reklam pulunu gəlirli kanallara köçürmək:**
+1. **Reklam pulunu gəlirli kanallara köçürmək:**  
 Paid Social reklamlarına (xüsusən North regionunda) 100 min dollara yaxın böyük pul xərclənsə də, gətirdiyi qazanc (ROAS: 4.03) çox aşağıdır və çəkilən xərci çətin çıxarır. Əvəzində Email və Organic Search kanalları 100–130 arası ROAS ilə bizə ən böyük mənfəəti verir. Bu səbəbdən Paid Social kanalının dörddəbirlik (Q4) büdcəsindən 35% kəsib, birbaşa Email və SEO (Organic Search) işlərinə keçirməliyik.
 
-2. **Xərcləri aylara görə düzgün bölmək:**
+2. **Xərcləri aylara görə düzgün bölmək:**  
 İlin sonuna doğru reklam xərcləri artdıqca ümumi mənfəətlilik 19.1-dən 11.58-ə düşür. Noyabrda gəlirin 1.35M$-a çatması reklamın nəticəsi yox, Black Friday endirim dövrüdür. Buna görə də Dekabr ayında havaya xərclənən büdcəni 20% azaldıb, həmin pulu satışı artıran Oktyabr və Noyabr aylarına keçirməliyik.
 
