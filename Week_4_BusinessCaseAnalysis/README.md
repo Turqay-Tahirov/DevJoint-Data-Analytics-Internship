@@ -46,7 +46,7 @@ Sorğunun izahı:
 
 ---
 
-## CHECKPOINT 3: Kök-səbəb araşdırması
+### CHECKPOINT 3: Kök-səbəb araşdırması
 
 ```
 SQL
@@ -87,10 +87,9 @@ Ekran görüntüsü linki
 (Hazırladığın Lightshot/Drive linkini bura qoy)
 
 
-Plaintext
 Təqdim olunan vizuallaşdırma iki əsas biznes iddiasını sübut edir:
-1. Sol qrafik Paid Social kanalının kəskin aşağı ROAS (4) verməsini və Email/Organic Search-ün əsas mənfəət mənbəyi olduğunu sübut edir.
-2. Sağ qrafik isə Noyabr ayındakı gəlir pikini (1.35M$) və mövsümlülük (Black Friday) effektini aydın göstərir.
+1. **Sol qrafik Paid Social kanalının kəskin aşağı ROAS (4) verməsini və Email/Organic Search-ün əsas mənfəət mənbəyi olduğunu sübut edir.**
+2. **Sağ qrafik isə Noyabr ayındakı gəlir pikini (1.35M$) və mövsümlülük (Black Friday) effektini aydın göstərir.**
    
 ### CHECKPOINT 5: Yazılı xülasə
 
@@ -111,9 +110,9 @@ Tövsiyə
 
 Bizim analizin nəticəsinə əsasən, belə bir konkret addım atmaq lazımdır:
 
-1. Reklam pulunu gəlirli kanallara köçürmək:
+1. **Reklam pulunu gəlirli kanallara köçürmək:**
 Paid Social reklamlarına (xüsusən North regionunda) 100 min dollara yaxın böyük pul xərclənsə də, gətirdiyi qazanc (ROAS: 4.03) çox aşağıdır və çəkilən xərci çətin çıxarır. Əvəzində Email və Organic Search kanalları 100–130 arası ROAS ilə bizə ən böyük mənfəəti verir. Bu səbəbdən Paid Social kanalının dörddəbirlik (Q4) büdcəsindən 35% kəsib, birbaşa Email və SEO (Organic Search) işlərinə keçirməliyik.
 
-2. Xərcləri aylara görə düzgün bölmək:
+2. **Xərcləri aylara görə düzgün bölmək:**
 İlin sonuna doğru reklam xərcləri artdıqca ümumi mənfəətlilik 19.1-dən 11.58-ə düşür. Noyabrda gəlirin 1.35M$-a çatması reklamın nəticəsi yox, Black Friday endirim dövrüdür. Buna görə də Dekabr ayında havaya xərclənən büdcəni 20% azaldıb, həmin pulu satışı artıran Oktyabr və Noyabr aylarına keçirməliyik.
 
