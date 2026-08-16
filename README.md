@@ -19,15 +19,30 @@ Aşağıdakı cədvəldən hər bir həftənin qovluğuna və **ətraflı hesaba
 
 ### 📁 Layihə Quruluşu (Project Structure)
 
-Layihə həftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukturlaşdırılıb:
+Layihə haftəlik tapşırıqlara uyğun olaraq aşağıdakı şəkildə strukturlaşdırılıb:
 
 | Qovluq / Fayl | Təsvir |
 | :--- | :--- |
-| 📁 **`Week_1_SQL_Basics_to_Advanced/`** | SQL sorğuları (Əsas və JOIN-lar) |
-| └── 📄 *`northwind.db`* | Layihədə istifadə olunan verilənlər bazası |
-| 📁 **`Week_2_Excel / Google Sheets Analizi/`** | Excel analitikası və Dashboard |
-| 📁 **`Week_3_BI Dashboard (Tableau Public / Power BI)/`** | PowerBI,DAX |
-| 📁 **`Week_4_Biznes Keys Analizi_Hesabat/`** | Biznes Keys analizi və hesabat |
+| 📁 **Week_1_SQL** | SQL üzrə tapşırıqlar və sorğular |
+| ├── 📄 `README.md` | Week 1 üzrə ətraflı hesabat |
+| └── 📄 `week1_all_queries.sql` | SQL sorğu kodları (JOIN, CTE, Window Functions) |
+| 🗄️ `northwind.db` | Layihədə istifadə olunan verilənlər bazası |
+| 📁 **Week_2_Excel** | Excel üzrə analitika və həllər |
+| ├── 📄 `README.md` | Week 2 üzrə ətraflı hesabat |
+| └── 📄 `all_checkpoint_excel` | Excel analitika faylı və hesablamalar |
+| 📁 **Week_3_PowerBI** | Power BI vizuallaşdırma və DAX hesablamaları |
+| ├── 📄 `README.md` | Week 3 üzrə ətraflı hesabat |
+| ├── 📊 `Week_3_Dashboard.pbix` | Power BI təqdimat/dashboard faylı |
+| ├── 🖼️ `week3-cp-2-kpi-card...` | KPI kartlarının ekran görüntüləri |
+| ├── 🖼️ `week3-cp-2-slicer.png` | Slicer / filtr görüntüləri |
+| ├── 🖼️ `week3-cp-2.png` | Hesabat vizualı |
+| └── 🖼️ `week3-cp5-Dashboar...` | Dashboard üzrə ümumi vizual görüntü |
+| 📁 **Week_4_BusinessCase...** | Biznes Keys analizi və yekun hesabat |
+| ├── 📁 `image` | Vizuallaşdırma və qrafik şəkilləri |
+| └── 📄 `README.md` | Week 4 biznes keys analizi hesabatı |
+| 📁 `image` | Ümumi layihə görüntüləri |
+| 📄 `README.md` | Əsas layihə hesabatı |
+
 
 
 ✍️ **Müəllif:** Turqay Tahirov  
