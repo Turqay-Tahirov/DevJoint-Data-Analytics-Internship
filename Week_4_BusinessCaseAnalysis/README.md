@@ -1,6 +1,8 @@
 # 📊 Marketing Performance Analysis (2024 vs 2025)
 
 Bu layihə İyul–Dekabr dövrü (2024 vs 2025) üzrə əsas müştəri cəlbetmə kanalları və regional bazarlar boyunca marketinq kampaniyalarının effektivliyinin uçdan-uca (end-to-end) qiymətləndirilməsini təqdim edir. Analiz kanal səmərəsizliklərini, gəlir mövsümlülüyünü və mənfəətlilik trendlərini üzə çıxarmaq üçün SQLite-da datanın çıxarılması ilə Microsoft Power BI-da datanın vizuallaşdırılmasını bir araya gətirir.
+
+---
 📌 **Project Overview**
 
 This project presents an end-to-end evaluation of marketing campaign performance across key acquisition channels and regional markets for the July–December period (2024 vs 2025). The analysis combines data extraction in SQLite with data visualization in Microsoft Power BI to uncover channel inefficiencies, revenue seasonalities, and profitability trends.
