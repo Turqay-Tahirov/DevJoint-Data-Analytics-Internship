@@ -1,23 +1,28 @@
 # 📊 Marketing Performance Analysis (2024 vs 2025)
-📌 Project Overview
+
+📌 **Project Overview**
+
 This project presents an end-to-end evaluation of marketing campaign performance across key acquisition channels and regional markets for the July–December period (2024 vs 2025). The analysis combines data extraction in SQLite with data visualization in Microsoft Power BI to uncover channel inefficiencies, revenue seasonalities, and profitability trends.
+
 ---
+
 ### CHECKPOINT 1: Biznes sualına uygun 3–5 KPI/metrikanın müəyyən edilməsi
 
 Seçdiyim metrikalar və izahı:
 
-1. Revenue (Gəlir): Kampaniyalardan gələn yekun məbləği müqayisə etməyə imkan verir.
-2. Sessions / Traffic: Reklamların sayta neçə potensial alıcı cəlb etdiyini görmək üçündür.
-3. Conversion Rate (Konversiya dərəcəsi): Sayta daxil olan istifadəçilərin neçə faizinin faktiki alıcıya çevrildiyini hesablayır.
-4. ROAS (Return on Ad Spend): Reklama xərclənən hər 1 manatın neçə manat gəlir gətirdiyini hesablayır və səmərəsiz reklamları aşkar edib tənzimləməyə kömək edir.
-5. CPA (Cost per Acquisition): Bir alıcı əldə etməyin şirkətə neçəyə başa gəldiyini görmək üçün istifadə olunur.
+1. **Revenue (Gəlir):** Kampaniyalardan gələn yekun məbləği müqayisə etməyə imkan verir.
+2. **Sessions / Traffic:** Reklamların sayta neçə potensial alıcı cəlb etdiyini görmək üçündür.
+3. **Conversion Rate (Konversiya dərəcəsi):** Sayta daxil olan istifadəçilərin neçə faizinin faktiki alıcıya çevrildiyini hesablayır.
+4. **ROAS (Return on Ad Spend):** Reklama xərclənən hər 1 manatın neçə manat gəlir gətirdiyini hesablayır və səmərəsiz reklamları aşkar edib tənzimləməyə kömək edir.
+5. **CPA (Cost per Acquisition):** Bir alıcı əldə etməyin şirkətə neçəyə başa gəldiyini görmək üçün istifadə olunur.
 
 ---
 
 ### CHECKPOINT 2: Lazımi datanın çıxarılması/aqreqasiyası üçün SQL sorğuları
-```SQL
+
+```sql
 SELECT 
-    c.channel,                      -- reklamın gediyi kanallar
+    c.channel,                      -- reklamın getdiyi kanallar
     c.campaign_objective,          -- kampaniyanın məqsədi
     cust.region,                   -- müştərinin yaşadığı region
     SUM(m.sessions) AS total_sessions,          -- sayta ümumi daxilolma sayı
@@ -33,7 +38,6 @@ JOIN customers cust ON m.customer_id = cust.customer_id
 GROUP BY c.channel, c.campaign_objective, cust.region
 ORDER BY total_revenue DESC;
 ```
-
 Sorğunun izahı:
 1. Əsas satış və trafik datamız marketing_events cədvəlində olduğu üçün onu mərkəzə qoyub (Fact Table), kanal, kampaniya məqsədi və region məlumatlarını götürmək üçün campaigns və customers cədvəllərini JOIN etdim.
 2. Datanı eyni vaxtda 3 fərqli tərəfdən (kanal, kampaniya məqsədi və region) GROUP BY ilə qruplaşdırdım.
