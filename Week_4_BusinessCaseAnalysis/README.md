@@ -1,11 +1,9 @@
-📊 Marketing Performance Analysis (2024 vs 2025)
+# 📊 Marketing Performance Analysis (2024 vs 2025)
 📌 Project Overview
 This project presents an end-to-end evaluation of marketing campaign performance across key acquisition channels and regional markets for the July–December period (2024 vs 2025). The analysis combines data extraction in SQLite with data visualization in Microsoft Power BI to uncover channel inefficiencies, revenue seasonalities, and profitability trends.
+---
+### CHECKPOINT 1: Biznes sualına uygun 3–5 KPI/metrikanın müəyyən edilməsi
 
-CHECKPOINT 1: Biznes sualına uygun 3–5 KPI/metrikanın müəyyən edilməsi
-Cavabını yaz...
-
-Plaintext
 Seçdiyim metrikalar və izahı:
 
 1. Revenue (Gəlir): Kampaniyalardan gələn yekun məbləği müqayisə etməyə imkan verir.
@@ -13,10 +11,11 @@ Seçdiyim metrikalar və izahı:
 3. Conversion Rate (Konversiya dərəcəsi): Sayta daxil olan istifadəçilərin neçə faizinin faktiki alıcıya çevrildiyini hesablayır.
 4. ROAS (Return on Ad Spend): Reklama xərclənən hər 1 manatın neçə manat gəlir gətirdiyini hesablayır və səmərəsiz reklamları aşkar edib tənzimləməyə kömək edir.
 5. CPA (Cost per Acquisition): Bir alıcı əldə etməyin şirkətə neçəyə başa gəldiyini görmək üçün istifadə olunur.
-CHECKPOINT 2: Lazımi datanın çıxarılması/aqreqasiyası üçün SQL sorğuları
-Cavabını yaz...
 
-SQL
+---
+
+### CHECKPOINT 2: Lazımi datanın çıxarılması/aqreqasiyası üçün SQL sorğuları
+```SQL
 SELECT 
     c.channel,                      -- reklamın gediyi kanallar
     c.campaign_objective,          -- kampaniyanın məqsədi
@@ -33,17 +32,19 @@ JOIN customers cust ON m.customer_id = cust.customer_id
 
 GROUP BY c.channel, c.campaign_objective, cust.region
 ORDER BY total_revenue DESC;
-Additional note (optional)
+```
 
-Plaintext
 Sorğunun izahı:
 1. Əsas satış və trafik datamız marketing_events cədvəlində olduğu üçün onu mərkəzə qoyub (Fact Table), kanal, kampaniya məqsədi və region məlumatlarını götürmək üçün campaigns və customers cədvəllərini JOIN etdim.
 2. Datanı eyni vaxtda 3 fərqli tərəfdən (kanal, kampaniya məqsədi və region) GROUP BY ilə qruplaşdırdım.
 3. SUM funksiyası ilə ümumi daxilolma (sessions), satış (conversions), xərc (spend) və gəlir (revenue) toplandı. ROUND funksiyası ilə nöqtədən sonra 2 rəqəm saxlanıldı.
 4. Reklamın effektivliyini ölçmək üçün gəlir / xərc nisbəti (ROAS) sıfıra bölünmə xətası (NULLIF) nəzərə alınaraq hesablandı.
-CHECKPOINT 3: Kök-səbəb araşdırması
-Cavabını yaz...
 
+---
+
+## CHECKPOINT 3: Kök-səbəb araşdırması
+
+```
 SQL
 /* 1. Kanal və Region üzrə səmərəlilik */
 SELECT 
@@ -57,7 +58,8 @@ JOIN campaigns c ON m.campaign_id = c.campaign_id
 JOIN customers cust ON m.customer_id = cust.customer_id 
 GROUP BY c.channel, cust.region 
 ORDER BY roas ASC;
-
+```
+```
 /* 2. Zaman və mövsümlülük trendi */
 SELECT 
     strftime('%Y-%m', m.date) AS month, 
@@ -67,9 +69,7 @@ SELECT
 FROM marketing_events m 
 GROUP BY month 
 ORDER BY month ASC;
-Additional note (optional)
-
-Plaintext
+```
 Kök-səbəb araşdırmasının nəticəsi:
 
 1. Makro nəticə: Ümumi gəlir yüksək görünür, amma mənfəətlilik (ROAS) ilin sonuna doğru azalır.
@@ -77,20 +77,19 @@ Kök-səbəb araşdırmasının nəticəsi:
 3. Mövsümlülük: Hər ilin Noyabr ayında (2025-ci ilin Noyabrında 1.35M$) gəlir pik həddə çatır. Bu artım reklamın effekti yox, Black Friday mövsümüdür. İyuldan Dekabra doğru xərclər artdıqca ROAS 19.1-dən 11.58-ə düşür.
 
 Yekun Kök-səbəb: İlin sonuna doğru Paid Social kimi baha kanallara artıq büdcə ayrılması və ROAS-ın düşməsidir. Black Friday gəliri bu səmərəsizliyi müvəqqəti gizlədir.
-CHECKPOINT 4: Narrativi dəstəkləyən vizuallaşdırma
+
+### CHECKPOINT 4: Narrativi dəstəkləyən vizuallaşdırma
 Ekran görüntüsü linki
 (Hazırladığın Lightshot/Drive linkini bura qoy)
 
-Additional note (optional)
 
 Plaintext
 Təqdim olunan vizuallaşdırma iki əsas biznes iddiasını sübut edir:
 1. Sol qrafik Paid Social kanalının kəskin aşağı ROAS (4) verməsini və Email/Organic Search-ün əsas mənfəət mənbəyi olduğunu sübut edir.
 2. Sağ qrafik isə Noyabr ayındakı gəlir pikini (1.35M$) və mövsümlülük (Black Friday) effektini aydın göstərir.
-CHECKPOINT 5: Yazılı xülasə
-Cavabını yaz...
+   
+### CHECKPOINT 5: Yazılı xülasə
 
-Plaintext
 Ümumi vəziyyət
 2024 və 2025-ci illərin ikinci yarısını (İyul–Dekabr) müqayisə edəndə görürük ki, ümumi gəlirimiz artıb. Xüsusən Noyabr ayında Black Friday endirimləri sayəsində satışlar pik həddə çatır. Amma gəlir artsa da, reklam kanallarının qazancı (ROAS) arasında böyük fərq var — bəzi kanallar çox yaxşı qazandırır, bəziləri isə demək olar ki, havaya xərcdir.
 
@@ -103,10 +102,9 @@ Tövsiyə
 * Qazanc gətirməyən Paid Social və Paid Search reklamlarının büdcəsini azaldıb tənzimləmək lazımdır.
 * Ən çox mənfəət gətirən Email göndərişlərinə və saytın axtarışda öndə çıxmasına (SEO) daha çox diqqət ayırmaq lazımdır.
 * Reklam büdcəsinin böyük hissəsini Dekabrda xərcləməkdənsə, satışın coşduğu Noyabr (Black Friday) ərəfəsinə saxlamalıyıq.
-CHECKPOINT 6: Ən azı 1 konkret, əməli tövsiyə
-Cavabını yaz...
+  
+### CHECKPOINT 6: Ən azı 1 konkret, əməli tövsiyə
 
-Plaintext
 Bizim analizin nəticəsinə əsasən, belə bir konkret addım atmaq lazımdır:
 
 1. Reklam pulunu gəlirli kanallara köçürmək:
@@ -114,4 +112,4 @@ Paid Social reklamlarına (xüsusən North regionunda) 100 min dollara yaxın b�
 
 2. Xərcləri aylara görə düzgün bölmək:
 İlin sonuna doğru reklam xərcləri artdıqca ümumi mənfəətlilik 19.1-dən 11.58-ə düşür. Noyabrda gəlirin 1.35M$-a çatması reklamın nəticəsi yox, Black Friday endirim dövrüdür. Buna görə də Dekabr ayında havaya xərclənən büdcəni 20% azaldıb, həmin pulu satışı artıran Oktyabr və Noyabr aylarına keçirməliyik.
-Additional note (optional)
+
