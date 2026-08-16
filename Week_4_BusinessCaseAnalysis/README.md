@@ -88,7 +88,7 @@ Yekun Kök-səbəb: İlin sonuna doğru Paid Social kimi baha kanallara artıq b
 ### CHECKPOINT 4: Narrativi dəstəkləyən vizuallaşdırma
 
 **Ekran görüntüsü linki:**  
-*[image/CP4_Marketing_Performance_Analysis.png]*
+![Dashboard Visual](images/CP4_Marketing_Performance_Analysis.png)
 
 **İzah:**  
 Təqdim olunan vizuallaşdırma iki əsas biznes iddiasını sübut edir:
