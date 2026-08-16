@@ -2,38 +2,116 @@
 📌 Project Overview
 This project presents an end-to-end evaluation of marketing campaign performance across key acquisition channels and regional markets for the July–December period (2024 vs 2025). The analysis combines data extraction in SQLite with data visualization in Microsoft Power BI to uncover channel inefficiencies, revenue seasonalities, and profitability trends.
 
-🔑 Key Findings & Root Cause Analysis
-Channel Profitability Disparity:
+CHECKPOINT 1: Biznes sualına uygun 3–5 KPI/metrikanın müəyyən edilməsi
+Cavabını yaz...
 
-High-performing non-paid channels like Email (ROAS ~130) and Organic Search (ROAS ~106) drive the vast majority of overall profitability.
+Plaintext
+Seçdiyim metrikalar və izahı:
 
-Paid conversion channels—specifically Paid Social (ROAS ~4.03) and Paid Search (ROAS ~5)—exhibit severe underperformance relative to their ad spend (~$100k invested in Paid Social).
+1. Revenue (Gəlir): Kampaniyalardan gələn yekun məbləği müqayisə etməyə imkan verir.
+2. Sessions / Traffic: Reklamların sayta neçə potensial alıcı cəlb etdiyini görmək üçündür.
+3. Conversion Rate (Konversiya dərəcəsi): Sayta daxil olan istifadəçilərin neçə faizinin faktiki alıcıya çevrildiyini hesablayır.
+4. ROAS (Return on Ad Spend): Reklama xərclənən hər 1 manatın neçə manat gəlir gətirdiyini hesablayır və səmərəsiz reklamları aşkar edib tənzimləməyə kömək edir.
+5. CPA (Cost per Acquisition): Bir alıcı əldə etməyin şirkətə neçəyə başa gəldiyini görmək üçün istifadə olunur.
+CHECKPOINT 2: Lazımi datanın çıxarılması/aqreqasiyası üçün SQL sorğuları
+Cavabını yaz...
 
-Overall ROAS Decline:
+SQL
+SELECT 
+    c.channel,                      -- reklamın gediyi kanallar
+    c.campaign_objective,          -- kampaniyanın məqsədi
+    cust.region,                   -- müştərinin yaşadığı region
+    SUM(m.sessions) AS total_sessions,          -- sayta ümumi daxilolma sayı
+    SUM(m.conversions) AS total_conversions,    -- uğurla tamamlanan ümumi satış sayı
+    ROUND(SUM(m.spend), 2) AS total_spend,      -- reklama xərclənən ümumi pul
+    ROUND(SUM(m.revenue), 2) AS total_revenue,  -- reklamdan qazanılan ümumi gəlir
+    ROUND(SUM(m.revenue) / NULLIF(SUM(m.spend), 0), 2) AS roas  -- ROAS-ın hesablanması (gəlir / xərc)
 
-As ad spend escalated toward the end of the year, overall campaign ROAS dropped significantly from 19.1 down to 11.58.
+FROM marketing_events m
+JOIN campaigns c ON m.campaign_id = c.campaign_id
+JOIN customers cust ON m.customer_id = cust.customer_id
 
-Seasonality vs. Campaign Effect:
+GROUP BY c.channel, c.campaign_objective, cust.region
+ORDER BY total_revenue DESC;
+Additional note (optional)
 
-Revenue peaks in November (~$1.35M in 2025) across both years. Root cause analysis confirms this spike is driven by natural Black Friday seasonality rather than paid marketing effectiveness.
+Plaintext
+Sorğunun izahı:
+1. Əsas satış və trafik datamız marketing_events cədvəlində olduğu üçün onu mərkəzə qoyub (Fact Table), kanal, kampaniya məqsədi və region məlumatlarını götürmək üçün campaigns və customers cədvəllərini JOIN etdim.
+2. Datanı eyni vaxtda 3 fərqli tərəfdən (kanal, kampaniya məqsədi və region) GROUP BY ilə qruplaşdırdım.
+3. SUM funksiyası ilə ümumi daxilolma (sessions), satış (conversions), xərc (spend) və gəlir (revenue) toplandı. ROUND funksiyası ilə nöqtədən sonra 2 rəqəm saxlanıldı.
+4. Reklamın effektivliyini ölçmək üçün gəlir / xərc nisbəti (ROAS) sıfıra bölünmə xətası (NULLIF) nəzərə alınaraq hesablandı.
+CHECKPOINT 3: Kök-səbəb araşdırması
+Cavabını yaz...
 
-📊 Dashboard Visuals
-The interactive Power BI dashboard incorporates two primary visual tracks:
+SQL
+/* 1. Kanal və Region üzrə səmərəlilik */
+SELECT 
+    c.channel, 
+    cust.region, 
+    SUM(m.spend) AS total_spend, 
+    SUM(m.revenue) AS total_revenue, 
+    ROUND(SUM(m.revenue) / NULLIF(SUM(m.spend), 0), 2) AS roas 
+FROM marketing_events m 
+JOIN campaigns c ON m.campaign_id = c.campaign_id 
+JOIN customers cust ON m.customer_id = cust.customer_id 
+GROUP BY c.channel, cust.region 
+ORDER BY roas ASC;
 
-ROAS Comparison by Channel (2024 vs 2025): Evaluates year-over-year profitability across Email, Organic, Paid Search, and Paid Social.
+/* 2. Zaman və mövsümlülük trendi */
+SELECT 
+    strftime('%Y-%m', m.date) AS month, 
+    SUM(m.spend) AS total_spend, 
+    SUM(m.revenue) AS total_revenue, 
+    ROUND(SUM(m.revenue) / NULLIF(SUM(m.spend), 0), 2) AS roas 
+FROM marketing_events m 
+GROUP BY month 
+ORDER BY month ASC;
+Additional note (optional)
 
-Monthly Revenue Dynamics (July–December): Tracks monthly top-line revenue trajectories and pinpoints seasonal peaks.
+Plaintext
+Kök-səbəb araşdırmasının nəticəsi:
 
-💡 Actionable Recommendations
-Reallocate Paid Marketing Budget:
+1. Makro nəticə: Ümumi gəlir yüksək görünür, amma mənfəətlilik (ROAS) ilin sonuna doğru azalır.
+2. Kanal və Region üzrə Kök-səbəb: Paid Social ən zəif kanaldır (North regionunda ROAS cəmi 4.03). Yüksək xərclərə (~100k$) baxmayaraq mənfəətliliyi çox aşağıdır. Email və Organic Search isə ən yüksək mənfəəti verir (ROAS 100–130 arası).
+3. Mövsümlülük: Hər ilin Noyabr ayında (2025-ci ilin Noyabrında 1.35M$) gəlir pik həddə çatır. Bu artım reklamın effekti yox, Black Friday mövsümüdür. İyuldan Dekabra doğru xərclər artdıqca ROAS 19.1-dən 11.58-ə düşür.
 
-Cut Paid Social Q4 budget by 35% (focusing on low-ROAS regions like North) and reallocate these funds directly into high-ROI channels (Email Marketing and SEO / Organic Search).
+Yekun Kök-səbəb: İlin sonuna doğru Paid Social kimi baha kanallara artıq büdcə ayrılması və ROAS-ın düşməsidir. Black Friday gəliri bu səmərəsizliyi müvəqqəti gizlədir.
+CHECKPOINT 4: Narrativi dəstəkləyən vizuallaşdırma
+Ekran görüntüsü linki
+(Hazırladığın Lightshot/Drive linkini bura qoy)
 
-Optimize Monthly Spend Allocation:
+Additional note (optional)
 
-Reduce inefficient December ad spend by 20% and shift capital toward pre-Black Friday promotional windows in late October and November to maximize conversion efficiency during peak buying demand.
+Plaintext
+Təqdim olunan vizuallaşdırma iki əsas biznes iddiasını sübut edir:
+1. Sol qrafik Paid Social kanalının kəskin aşağı ROAS (4) verməsini və Email/Organic Search-ün əsas mənfəət mənbəyi olduğunu sübut edir.
+2. Sağ qrafik isə Noyabr ayındakı gəlir pikini (1.35M$) və mövsümlülük (Black Friday) effektini aydın göstərir.
+CHECKPOINT 5: Yazılı xülasə
+Cavabını yaz...
 
-🛠️ Tools & Technologies Used
-Database Management: SQLite (Data extraction, aggregation, multi-table joins)
+Plaintext
+Ümumi vəziyyət
+2024 və 2025-ci illərin ikinci yarısını (İyul–Dekabr) müqayisə edəndə görürük ki, ümumi gəlirimiz artıb. Xüsusən Noyabr ayında Black Friday endirimləri sayəsində satışlar pik həddə çatır. Amma gəlir artsa da, reklam kanallarının qazancı (ROAS) arasında böyük fərq var — bəzi kanallar çox yaxşı qazandırır, bəziləri isə demək olar ki, havaya xərcdir.
 
-Business Intelligence & Visualization: Microsoft Power BI (Star Schema modeling, custom DAX measures, Data Labels, formatting)
+Tapıntılar
+* Pul tələb edən reklamlar zəifdir: Ən çox pul tökdüyümüz Paid Social (ROAS: 4) və Paid Search (ROAS: 5) reklamları xərcini çətin çıxarır.
+* Pulsuz/ucuz kanallar qazandırır: Email (ROAS: 130) və Organic Search / SEO (ROAS: 106) bizə demək olar ki, xərcsiz ən böyük mənfəəti gətirir.
+* Noyabr bumu: 2025-ci ilin Noyabrında gəlirimiz 2024-ün eyni ayı ilə müqayisədə 1.22M$-dan 1.35M$-a qalxıb.
+
+Tövsiyə
+* Qazanc gətirməyən Paid Social və Paid Search reklamlarının büdcəsini azaldıb tənzimləmək lazımdır.
+* Ən çox mənfəət gətirən Email göndərişlərinə və saytın axtarışda öndə çıxmasına (SEO) daha çox diqqət ayırmaq lazımdır.
+* Reklam büdcəsinin böyük hissəsini Dekabrda xərcləməkdənsə, satışın coşduğu Noyabr (Black Friday) ərəfəsinə saxlamalıyıq.
+CHECKPOINT 6: Ən azı 1 konkret, əməli tövsiyə
+Cavabını yaz...
+
+Plaintext
+Bizim analizin nəticəsinə əsasən, belə bir konkret addım atmaq lazımdır:
+
+1. Reklam pulunu gəlirli kanallara köçürmək:
+Paid Social reklamlarına (xüsusən North regionunda) 100 min dollara yaxın böyük pul xərclənsə də, gətirdiyi qazanc (ROAS: 4.03) çox aşağıdır və çəkilən xərci çətin çıxarır. Əvəzində Email və Organic Search kanalları 100–130 arası ROAS ilə bizə ən böyük mənfəəti verir. Bu səbəbdən Paid Social kanalının dörddəbirlik (Q4) büdcəsindən 35% kəsib, birbaşa Email və SEO (Organic Search) işlərinə keçirməliyik.
+
+2. Xərcləri aylara görə düzgün bölmək:
+İlin sonuna doğru reklam xərcləri artdıqca ümumi mənfəətlilik 19.1-dən 11.58-ə düşür. Noyabrda gəlirin 1.35M$-a çatması reklamın nəticəsi yox, Black Friday endirim dövrüdür. Buna görə də Dekabr ayında havaya xərclənən büdcəni 20% azaldıb, həmin pulu satışı artıran Oktyabr və Noyabr aylarına keçirməliyik.
+Additional note (optional)
